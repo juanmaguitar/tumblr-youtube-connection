@@ -5,6 +5,8 @@ smarty
 *.sublime-workspace
 .bash_history
 .vagrant
+_src/js/config.js
+.sass-cache/
 
 #################
 ## Eclipse

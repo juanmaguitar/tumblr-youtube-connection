@@ -5,11 +5,10 @@
  * and $rhythm-unit variables. Also, correct text resizing oddly in IE 6/7 when
  * body `font-size` is set using `em` units.
  */
-/* line 106, ../../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/typography/_vertical_rhythm.scss */
+/* line 106, ../../../../../../../Users/juanma/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/_vertical_rhythm.scss */
 html {
   font-size: 100%;
-  line-height: 1.5em;
-}
+  line-height: 1.5em; }
 
 /**
  * 1. Set default font family to sans-serif.
@@ -23,16 +22,14 @@ html {
   -ms-text-size-adjust: 100%;
   /* 2 */
   -webkit-text-size-adjust: 100%;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
  * Remove default margin.
  */
 /* line 88, ../bower_components/normalize/_normalize.scss */
 body {
-  margin: 0;
-}
+  margin: 0; }
 
 /* HTML5 display definitions
    ========================================================================== */
@@ -56,8 +53,7 @@ menu,
 nav,
 section,
 summary {
-  display: block;
-}
+  display: block; }
 
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
@@ -73,8 +69,7 @@ video {
   *display: inline;
   *zoom: 1;
   vertical-align: baseline;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
  * Prevent modern browsers from displaying `audio` without controls.
@@ -83,24 +78,21 @@ video {
 /* line 142, ../bower_components/normalize/_normalize.scss */
 audio:not([controls]) {
   display: none;
-  height: 0;
-}
+  height: 0; }
 
 /**
  * Address `[hidden]` styling not present in IE 8/9/10.
  */
 /* line 152, ../bower_components/normalize/_normalize.scss */
 [hidden] {
-  display: none;
-}
+  display: none; }
 
 /**
  * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
  */
 /* line 161, ../bower_components/normalize/_normalize.scss */
 template {
-  display: none;
-}
+  display: none; }
 
 /* Links
    ========================================================================== */
@@ -109,8 +101,7 @@ template {
  */
 /* line 173, ../bower_components/normalize/_normalize.scss */
 a {
-  background-color: transparent;
-}
+  background-color: transparent; }
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
@@ -118,8 +109,7 @@ a {
 /* line 182, ../bower_components/normalize/_normalize.scss */
 a:active,
 a:hover {
-  outline: 0;
-}
+  outline: 0; }
 
 /* Text-level semantics
    ========================================================================== */
@@ -128,8 +118,7 @@ a:hover {
  */
 /* line 194, ../bower_components/normalize/_normalize.scss */
 abbr[title] {
-  border-bottom: 1px dotted;
-}
+  border-bottom: 1px dotted; }
 
 /**
  * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
@@ -137,24 +126,21 @@ abbr[title] {
 /* line 202, ../bower_components/normalize/_normalize.scss */
 b,
 strong {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /**
  * Set 1 unit of vertical rhythm on the top and bottom margin.
  */
 /* line 212, ../bower_components/normalize/_normalize.scss */
 blockquote {
-  margin: 1.5em 40px;
-}
+  margin: 1.5em 40px; }
 
 /**
  * Address styling not present in Safari and Chrome.
  */
 /* line 221, ../bower_components/normalize/_normalize.scss */
 dfn {
-  font-style: italic;
-}
+  font-style: italic; }
 
 /**
  * Address variable `h1` font-size and margin within `section` and `article`
@@ -167,48 +153,42 @@ h1 {
   line-height: 1.5em;
   /* Set 1 unit of vertical rhythm on the top and bottom margins. */
   margin-top: 0.75em;
-  margin-bottom: 0.75em;
-}
+  margin-bottom: 0.75em; }
 
 /* line 245, ../bower_components/normalize/_normalize.scss */
 h2 {
   font-size: 1.5em;
   line-height: 2em;
   margin-top: 1em;
-  margin-bottom: 1em;
-}
+  margin-bottom: 1em; }
 
 /* line 251, ../bower_components/normalize/_normalize.scss */
 h3 {
   font-size: 1.17em;
   line-height: 1.28205em;
   margin-top: 1.28205em;
-  margin-bottom: 1.28205em;
-}
+  margin-bottom: 1.28205em; }
 
 /* line 257, ../bower_components/normalize/_normalize.scss */
 h4 {
   font-size: 1em;
   line-height: 1.5em;
   margin-top: 1.5em;
-  margin-bottom: 1.5em;
-}
+  margin-bottom: 1.5em; }
 
 /* line 263, ../bower_components/normalize/_normalize.scss */
 h5 {
   font-size: 0.83em;
   line-height: 1.80723em;
   margin-top: 1.80723em;
-  margin-bottom: 1.80723em;
-}
+  margin-bottom: 1.80723em; }
 
 /* line 269, ../bower_components/normalize/_normalize.scss */
 h6 {
   font-size: 0.67em;
   line-height: 2.23881em;
   margin-top: 2.23881em;
-  margin-bottom: 2.23881em;
-}
+  margin-bottom: 2.23881em; }
 
 /**
  * Address styling not present in IE 8/9.
@@ -216,8 +196,7 @@ h6 {
 /* line 281, ../bower_components/normalize/_normalize.scss */
 mark {
   background: #ff0;
-  color: #000;
-}
+  color: #000; }
 
 /**
  * Set 1 unit of vertical rhythm on the top and bottom margin.
@@ -225,16 +204,14 @@ mark {
 /* line 292, ../bower_components/normalize/_normalize.scss */
 p,
 pre {
-  margin: 1.5em 0;
-}
+  margin: 1.5em 0; }
 
 /**
  * Address inconsistent and variable font size in all browsers.
  */
 /* line 302, ../bower_components/normalize/_normalize.scss */
 small {
-  font-size: 80%;
-}
+  font-size: 80%; }
 
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
@@ -245,18 +222,15 @@ sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline;
-}
+  vertical-align: baseline; }
 
 /* line 318, ../bower_components/normalize/_normalize.scss */
 sup {
-  top: -0.5em;
-}
+  top: -0.5em; }
 
 /* line 322, ../bower_components/normalize/_normalize.scss */
 sub {
-  bottom: -0.25em;
-}
+  bottom: -0.25em; }
 
 /* Lists
    ========================================================================== */
@@ -268,13 +242,11 @@ dl,
 menu,
 ol,
 ul {
-  margin: 1.5em 0;
-}
+  margin: 1.5em 0; }
 
 /* line 355, ../bower_components/normalize/_normalize.scss */
 dd {
-  margin: 0 0 0 40px;
-}
+  margin: 0 0 0 40px; }
 
 /**
  * Address paddings set differently in IE 6/7.
@@ -283,8 +255,7 @@ dd {
 menu,
 ol,
 ul {
-  padding: 0 0 0 40px;
-}
+  padding: 0 0 0 40px; }
 
 /**
  * Correct list images handled incorrectly in IE 7.
@@ -293,8 +264,7 @@ ul {
 nav ul,
 nav ol {
   list-style: none;
-  list-style-image: none;
-}
+  list-style-image: none; }
 
 /* Embedded content
    ========================================================================== */
@@ -305,16 +275,14 @@ nav ol {
 img {
   border: 0;
   /* Improve image quality when scaled in IE 7. */
-  -ms-interpolation-mode: bicubic;
-}
+  -ms-interpolation-mode: bicubic; }
 
 /**
  * Correct overflow not hidden in IE 9/10/11.
  */
 /* line 403, ../bower_components/normalize/_normalize.scss */
 svg:not(:root) {
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 /* Grouping content
    ========================================================================== */
@@ -323,8 +291,7 @@ svg:not(:root) {
  */
 /* line 415, ../bower_components/normalize/_normalize.scss */
 figure {
-  margin: 1.5em 40px;
-}
+  margin: 1.5em 40px; }
 
 /**
  * Address differences between Firefox and other browsers.
@@ -334,16 +301,14 @@ hr {
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
-  height: 0;
-}
+  height: 0; }
 
 /**
  * Contain overflow in all browsers.
  */
 /* line 433, ../bower_components/normalize/_normalize.scss */
 pre {
-  overflow: auto;
-}
+  overflow: auto; }
 
 /**
  * Address odd `em`-unit font size rendering in all browsers.
@@ -354,8 +319,7 @@ kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  font-size: 1em;
-}
+  font-size: 1em; }
 
 /* Forms
    ========================================================================== */
@@ -368,8 +332,7 @@ samp {
  */
 /* line 465, ../bower_components/normalize/_normalize.scss */
 form {
-  margin: 0;
-}
+  margin: 0; }
 
 /**
  * 1. Correct color not being inherited.
@@ -394,16 +357,14 @@ textarea {
   *font-family: sans-serif;
   /* 4 */
   *vertical-align: middle;
-  /* 5 */
-}
+  /* 5 */ }
 
 /**
  * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
 /* line 497, ../bower_components/normalize/_normalize.scss */
 button {
-  overflow: visible;
-}
+  overflow: visible; }
 
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
@@ -414,8 +375,7 @@ button {
 /* line 508, ../bower_components/normalize/_normalize.scss */
 button,
 select {
-  text-transform: none;
-}
+  text-transform: none; }
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
@@ -436,8 +396,7 @@ input[type="submit"] {
   cursor: pointer;
   /* 3 */
   *overflow: visible;
-  /* 4 */
-}
+  /* 4 */ }
 
 /**
  * Re-set default cursor for disabled elements.
@@ -445,8 +404,7 @@ input[type="submit"] {
 /* line 538, ../bower_components/normalize/_normalize.scss */
 button[disabled],
 html input[disabled] {
-  cursor: default;
-}
+  cursor: default; }
 
 /**
  * Remove inner padding and border in Firefox 4+.
@@ -455,8 +413,7 @@ html input[disabled] {
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 /**
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
@@ -464,8 +421,7 @@ input::-moz-focus-inner {
  */
 /* line 558, ../bower_components/normalize/_normalize.scss */
 input {
-  line-height: normal;
-}
+  line-height: normal; }
 
 /**
  * It's recommended that you don't attempt to style these elements.
@@ -488,8 +444,7 @@ input[type="radio"] {
   *height: 13px;
   /* 3 */
   *width: 13px;
-  /* 3 */
-}
+  /* 3 */ }
 
 /**
  * Fix the cursor style for Chrome's increment/decrement buttons. For certain
@@ -499,8 +454,7 @@ input[type="radio"] {
 /* line 590, ../bower_components/normalize/_normalize.scss */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
+  height: auto; }
 
 /**
  * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
@@ -519,12 +473,10 @@ input[type="search"] {
    * Remove inner padding and search cancel button in Safari and Chrome on OS X.
    * Safari (but not Chrome) clips the cancel button when the search input has
    * padding (and `textfield` appearance).
-   */
-}
-/* line 611, ../bower_components/normalize/_normalize.scss */
-input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
+   */ }
+  /* line 611, ../bower_components/normalize/_normalize.scss */
+  input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; }
 
 /**
  * Define consistent border, margin, and padding.
@@ -545,8 +497,7 @@ fieldset {
   padding-left: 0.875em;
   border-right-width: 0.0625em;
   border-right-style: solid;
-  padding-right: 0.875em;
-}
+  padding-right: 0.875em; }
 
 /**
  * 1. Correct `color` not being inherited in IE 8/9/10/11.
@@ -560,16 +511,14 @@ legend {
   padding: 0;
   /* 2 */
   *margin-left: -7px;
-  /* 3 */
-}
+  /* 3 */ }
 
 /**
  * Remove default vertical scrollbar in IE 8/9/10/11.
  */
 /* line 651, ../bower_components/normalize/_normalize.scss */
 textarea {
-  overflow: auto;
-}
+  overflow: auto; }
 
 /**
  * Don't inherit the `font-weight` (applied by a rule above).
@@ -577,8 +526,7 @@ textarea {
  */
 /* line 660, ../bower_components/normalize/_normalize.scss */
 optgroup {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /* Tables
    ========================================================================== */
@@ -588,32 +536,27 @@ optgroup {
 /* line 671, ../bower_components/normalize/_normalize.scss */
 table {
   border-collapse: collapse;
-  border-spacing: 0;
-}
+  border-spacing: 0; }
 
 /* line 676, ../bower_components/normalize/_normalize.scss */
 td,
 th {
-  padding: 0;
-}
+  padding: 0; }
 
 @media all {
   /*  Use tilda instead of the child selector to handle error
       case when several <summary> elements were specified */
   /* line 4, ../scss/_details.scss */
   summary:first-child ~ * {
-    display: none;
-  }
+    display: none; }
 
   /* line 8, ../scss/_details.scss */
   details[open] > * {
-    display: block;
-  }
+    display: block; }
 
   /* line 12, ../scss/_details.scss */
   details > summary:first-child {
-    display: block;
-  }
+    display: block; }
 
   /*  IE8 has weird issue with updating state of pseudoelements.
       So use a triangle symbol for it instead to fix that quirks */
@@ -624,18 +567,15 @@ th {
     font-size: 0.75em;
     margin-top: 0.25em;
     margin-left: 0.25em;
-    position: absolute;
-  }
+    position: absolute; }
 
   /* line 27, ../scss/_details.scss */
   details[open]:before {
-    content: '\25BC';
-  }
+    content: '\25BC'; }
 
   /* line 31, ../scss/_details.scss */
   summary:first-child {
-    text-indent: 1.25em;
-  }
+    text-indent: 1.25em; }
 
   /*  For modern browsers use border to draw the triangle */
   /* line 36, ../scss/_details.scss */
@@ -651,79 +591,63 @@ th {
     /* use scale to apply antialiasing on the triangle */
     transform: rotate(0deg) scale(1.5);
     transform-origin: 25% 50%;
-    transition: transform 0.15s ease-out;
-  }
+    transition: transform 0.15s ease-out; }
 
   /* line 53, ../scss/_details.scss */
   details[open]::before {
     content: '';
-    transform: rotate(90deg) scale(1.5);
-  }
+    transform: rotate(90deg) scale(1.5); }
 
   /*  Hide native indicator and use pseudoelement instead */
   /* line 59, ../scss/_details.scss */
   summary::-webkit-details-marker {
-    display: none;
-  }
-}
+    display: none; } }
 /* line 1, ../scss/_style.scss */
 .container {
-  margin: 1em;
-}
+  margin: 1em; }
 
 /* line 2, ../scss/_style.scss */
 .hidden {
-  display: none !important;
-}
+  display: none !important; }
 
 /* line 3, ../scss/_style.scss */
 .ok {
-  color: green;
-}
+  color: green; }
 
 /* line 5, ../scss/_style.scss */
 button[disabled] {
-  color: #ddd;
-}
+  color: #ddd; }
 
 /* line 10, ../scss/_style.scss */
 dl dt {
   float: left;
-  clear: left;
-}
+  clear: left; }
 /* line 11, ../scss/_style.scss */
 dl dd {
   font-weight: bold;
-  -webkit-margin-start: 10px;
-}
+  -webkit-margin-start: 10px; }
 
 /* line 14, ../scss/_style.scss */
 details {
-  margin: 1em 0;
-}
+  margin: 1em 0; }
 
 /* line 18, ../scss/_style.scss */
 details, summary {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 /* line 23, ../scss/_style.scss */
 #tumblr_videos {
   float: left;
-  clear: both;
-}
+  clear: both; }
 /* line 28, ../scss/_style.scss */
 #tumblr_videos li {
-  margin: 1em;
-}
+  margin: 1em; }
 /* line 29, ../scss/_style.scss */
 #tumblr_videos li > p {
-  text-transform: capitalize;
-}
+  text-transform: capitalize; }
 /* line 30, ../scss/_style.scss */
 #tumblr_videos li a {
-  margin: 1em;
-}
+  margin: 1em; }
 
 /* line 35, ../scss/_style.scss */
 .videos_container {
@@ -731,23 +655,19 @@ details, summary {
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
-  border: 1px solid #ccc;
-}
+  border: 1px solid #ccc; }
 /* line 43, ../scss/_style.scss */
 .videos_container ol {
-  display: inline-flex;
-}
+  display: inline-flex; }
 /* line 44, ../scss/_style.scss */
 .videos_container ol li {
   display: inline-block;
   margin: 10px;
-  width: 250px;
-}
+  width: 250px; }
 
 /* line 53, ../scss/_style.scss */
 #getting_videos {
   width: 100%;
-  word-wrap: break-word;
-}
+  word-wrap: break-word; }
 
 /*# sourceMappingURL=main.css.map */

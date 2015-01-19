@@ -4,17 +4,17 @@
 // https://developers.google.com/api-client-library/javascript/features/authentication
 
 	// your CLIENT_ID pointing to "http://localhost:8080/""
-var OAUTH2_CLIENT_ID = 'MY_OAUTH2_CLIENT_ID_localhost_8080',
+var GOOGLE_OAUTH2_CLIENT_ID = 'MY_OAUTH2_CLIENT_ID_localhost_8080',
 
 	// jsfiddle
 	// OAUTH2_CLIENT_ID = '6114173627-k1lcg5rpis7c6p9bg10h03cir7fsgbrl.apps.googleusercontent.com',
 
-	OAUTH2_SCOPES = [
+	GOOGLE_OAUTH2_SCOPES = [
 		'https://www.googleapis.com/auth/youtube',
 		'https://www.googleapis.com/auth/youtube.readonly',
 		'https://www.googleapis.com/auth/youtube.upload'
 	],
-	API_KEY = 'MY_GOOGLE_API_KEY', // this key identifies me as a developer
+	GOOGLE_API_KEY = 'MY_GOOGLE_API_KEY', // this key identifies me as a developer
 
 	// https://www.tumblr.com/docs/en/api/v2
 	TUMBLR_API_KEY = 'MY_TUMBLR_API_KEY', // this key identifies me as a developer

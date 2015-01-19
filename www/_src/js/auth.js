@@ -2,7 +2,7 @@
 // http://stackoverflow.com/questions/26794095/youtube-analytics-api-how-to-enter-key-daily-limit-for-unauthenticated-use-ex
 
 googleApiClientReady = function() {
-  gapi.client.setApiKey(API_KEY);
+  gapi.client.setApiKey(GOOGLE_API_KEY);
   gapi.auth.init(function() {
     window.setTimeout(checkAuth, 1);
   });
@@ -15,8 +15,8 @@ googleApiClientReady = function() {
 
 function checkAuth() {
   gapi.auth.authorize({
-    client_id: OAUTH2_CLIENT_ID,
-    scope: OAUTH2_SCOPES,
+    client_id: GOOGLE_OAUTH2_CLIENT_ID,
+    scope: GOOGLE_OAUTH2_SCOPES,
     immediate: true
   }, handleAuthResult);
 }

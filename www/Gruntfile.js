@@ -119,6 +119,6 @@ line_comments = true
   grunt.registerTask('test', ['jshint']);
   grunt.registerTask('dev', ['jshint', 'targethtml:dev', 'compass:dev']);
   grunt.registerTask('prod', ['jshint', 'targethtml:prod', 'concat', 'uglify', 'compass:prod']);
-  grunt.registerTask('default', ['jshint', 'targethtml:prod', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'targethtml:dev', 'compass:dev']);
 
 };
