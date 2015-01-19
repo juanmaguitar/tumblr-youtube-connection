@@ -1,0 +1,56 @@
+.container { margin:1em;}
+.hidden { display:none !important; }
+.ok { color:green; }
+
+button[disabled] {
+	color:#ddd;
+}
+
+dl {
+	dt { float:left; clear:left; }
+	dd { font-weight:bold; -webkit-margin-start: 10px; }
+}
+
+details {
+	margin: 1em 0;
+}
+
+details, summary {
+	cursor: pointer;
+}
+
+#tumblr_videos {
+	& {
+		float:left;
+		clear:both;
+	}
+	li {
+		& { margin:1em; }
+		& > p { text-transform: capitalize; }
+		a { margin:1em; }
+	}
+}
+
+.videos_container {
+	& {
+		height: 350px;
+		width: 100%;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		border: 1px solid #ccc;
+	}
+	ol {
+		& { display: inline-flex; }
+		li {
+			display:inline-block;
+			margin:10px;
+			width: 250px;
+		}
+	}
+
+}
+
+#getting_videos {
+	width: 100%;
+	word-wrap: break-word;
+}

@@ -1,0 +1,16 @@
+{
+	"name" : "aula-virtual",
+	"version" : "1.0.0",
+	"authors" : [ "juanma.garrido" ],
+	"description" : "Tumblr YouTube Connection",
+	"keywords" : [],
+	"license" : "Apache 2.0",
+	"private": true,
+	"main" : "js/main.js",
+	"dependencies" : {
+		"jquery": "git://github.com/jquery/jquery.git#2.1.3",
+		"bluebird": "git://github.com/petkaantonov/bluebird#2.7.1",
+		"bluebird": "git://github.com/petkaantonov/bluebird#2.7.1",
+		"normalize": "git://github.com/JohnAlbin/normalize-scss#3.0.2"
+	}
+}
