@@ -66,7 +66,7 @@ And _authorize requests using OAuth 2.0_ for the concrete methods we're using in
 
 ## Launching it locally
 
-To launch it locally you just have to do from the terminal (asuming you have vagrant and virtual-box installed):
+To launch it locally you just have to do from the terminal (asuming you have _vagrant_ and _virtual-box_ installed):
 
     $ cd tumblr-youtube-connection
     $ vagrant up
