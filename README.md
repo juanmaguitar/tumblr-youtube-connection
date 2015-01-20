@@ -57,7 +57,7 @@ Look for the _YouTube Data API v3_ and activate it
 
 ![YouTube API activation](www/img/youtube_api_activation.png) 
 
-Then enter into its API 
+Then enter into [its API](http://developers.google.com/apis-explorer/#p/youtube/v3/) 
 
 ![YouTube API exploration](www/img/youtube_api_explore.png) 
 
@@ -67,7 +67,7 @@ And _authorize requests using OAuth 2.0_ for the concrete methods we're using in
 
 ![youtube.playlists.insert](www/img/youtube_playlists_insert.png) 
 
-- `gapi.client.youtube.playlistItems.insert`
+- [`gapi.client.youtube.playlistItems.insert`](http://developers.google.com/apis-explorer/#p/youtube/v3/youtube.playlistItems.insert)
 
 ![youtube.playlistitems.insert](www/img/youtube_playlistitems_insert.png) 
 
