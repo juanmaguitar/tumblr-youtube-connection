@@ -8,6 +8,8 @@ smarty
 _src/js/config.js
 .sass-cache/
 www/_src/css/
+www/_dist/
+www/index.html
 
 #################
 ## Eclipse
