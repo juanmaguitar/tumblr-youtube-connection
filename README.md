@@ -7,7 +7,7 @@ This project do the following:
 
 ## Install
 
-After cloning the repository, you must launch `npm` & `bower` installers and execute `grunt`
+After cloning the repository, you must launch [`npm`](https://docs.npmjs.com/getting-started/what-is-npm) & [`bower`](http://bower.io/) installers and execute [`grunt`](http://gruntjs.com/)
 
     $ git clone https://github.com/juanmaguitar/tumblr-youtube-connection.git
     $ cd tumblr-youtube-connection
@@ -24,12 +24,12 @@ To test it you have to edit the file `www/_src/js/config.js` and add the proper 
 
 ### Get a Tumblr API Key
 
-Check the [Tumblr API documentation](https://www.tumblr.com/docs/en/api/v2#auth) 
+Check the [Tumblr API documentation](https://www.tumblr.com/docs/en/api/v2#auth)   
 Get your Tumblr _OAuth Consumer Key_ from [here](https://www.tumblr.com/oauth/apps)
 
 ![Tumblr API Key](www/img/tumblr_API.png)
 
-And replaces the `MY_TUMBLR_API_KEY` string with your _OAuth Consumer Key_  in the `www/_src/js/config.js` file
+And replace the `MY_TUMBLR_API_KEY` string with your _OAuth Consumer Key_  in the `www/_src/js/config.js` file
 
     TUMBLR_API_KEY = 'MY_TUMBLR_API_KEY'
 
@@ -41,7 +41,7 @@ Get an _ID Client_ and an _API key_ from the Google APIs Console at [https://cod
 
 ![Google API Key](www/img/google_API.png) 
 
-And replaces the...
+And replace the...
 
 - `MY_OAUTH2_CLIENT_ID_localhost_8080` string with your _ID Client_ 
 - `MY_GOOGLE_API_KEY` string with your _API key_ 
@@ -61,12 +61,20 @@ Then enter into its API
 
 ![YouTube API exploration](www/img/youtube_api_explore.png) 
 
-And _authorize requests using OAuth 2.0_ for the concrete methods we're using in this application: `gapi.client.youtube.playlists.insert` & `gapi.client.youtube.playlistItems.insert`
+And _authorize requests using OAuth 2.0_ for the concrete methods we're using in this application: 
+
+- [`gapi.client.youtube.playlists.insert`](http://developers.google.com/apis-explorer/#p/youtube/v3/youtube.playlists.insert) 
+
+![youtube.playlists.insert](www/img/youtube_playlists_insert.png) 
+
+- `gapi.client.youtube.playlistItems.insert`
+
+![youtube.playlistitems.insert](www/img/youtube_playlistitems_insert.png) 
 
 
 ## Launching it locally
 
-To launch it locally you just have to do from the terminal (asuming you have _vagrant_ and _virtual-box_ installed):
+To launch it locally you just have to do from the terminal (asuming you have [_vagrant_](https://docs.vagrantup.com/v2/getting-started/) and [_virtual-box_](https://www.virtualbox.org/) installed):
 
     $ cd tumblr-youtube-connection
     $ vagrant up
