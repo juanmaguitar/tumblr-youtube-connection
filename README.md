@@ -83,5 +83,15 @@ After that you'll have the project available in your browser in the URL
 
     http://localhost:8080/
 
+## Development & Production version
+
+To get the development version of the project just do
+
+    grunt dev
+
+To get the production version of the project (files at __dist_ folder) just do
+
+    grunt prod
+
 
 _Thanks to [@carlosvillu](https://github.com/carlosvillu) for his help w/ the Google API and Promises management w/ BlueBird :)_ 
