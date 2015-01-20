@@ -7,6 +7,7 @@ smarty
 .vagrant
 _src/js/config.js
 .sass-cache/
+www/_src/css/
 
 #################
 ## Eclipse
