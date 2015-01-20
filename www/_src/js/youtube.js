@@ -1,4 +1,4 @@
-!function ( $ ) {
+!(function ( $ ) {
     "use strict";
 
         /**
@@ -116,6 +116,11 @@
         return video_posts; // return array of videos to be treated w/ each
     }
 
+    /**
+    * Returns a Promise (chaining) that creates a new playlist in youTube (through its API) and solve it (the promise) once is created
+    * @param {Object} video Video custom data
+    * @returns {Object} Pronise
+    */
     function promiseAddToPlaylist( video ){
 
         var playlist_id = playlist_data.id,
@@ -140,12 +145,20 @@
                 percentage_add_videos = (counter_add_videos/counter_videos_found)*100;
 
                 updateUIafterVideoInserted(response, video, counter_add_videos, percentage_add_videos);
+
                 resolve(response);
             });
         } );
 
     }
 
+    /**
+    * Update some UI elements to show which videos have been added
+    * @param {Object} response Response from the YouTube API after the adition of the video
+    * @param {Object} video Video custom data
+    * @param {Number} counter_add_videos Total of added videos
+    * @param {Number} percentage_add_videos Percentage of videos added from the total
+    */
     function updateUIafterVideoInserted ( response, video, counter_add_videos, percentage_add_videos ) {
 
         var videoTitle = response.result.snippet.title,
@@ -170,6 +183,9 @@
 
     }
 
+    /**
+    * Updates UI to show the process have been completed
+    */
     function updateUIprocessCompleted () {
 
         var updateLinkContent = function(i, content) {
@@ -181,7 +197,10 @@
 
     }
 
-
+    /**
+    * Update UI to show data of the recently created playlist
+    * @param {Object} data Playlist info
+    */
     function updateDomPlaylistData_Step3 (data) {
 
         $('#playlist-id').html(data.id);
@@ -204,6 +223,4 @@
 
     }
 
-
-
-}( jQuery );
+})( jQuery );
