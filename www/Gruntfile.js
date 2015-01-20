@@ -6,16 +6,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json')
   });
 
-/*
-preferred_syntax = :sass
-http_path = '/'
-css_dir = '_dist'
-sass_dir = '_src/scss'
-images_dir = 'img'
-relative_assets = true
-line_comments = true
-# output_style = :compressed
-*/
+
   // targethtml
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.config('compass', {
