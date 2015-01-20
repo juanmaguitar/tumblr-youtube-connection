@@ -89,7 +89,7 @@ To get the development version of the project just do
 
     grunt dev
 
-To get the production version of the project (files at __dist_ folder) just do
+To get the production version of the project (files at `_dist` folder) just do
 
     grunt prod
 
