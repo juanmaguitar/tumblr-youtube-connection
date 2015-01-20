@@ -1,22 +1,46 @@
-(function () {
+!function ( $ ) {
     "use strict";
 
+        /**
+         * List of videos (objects) found on Tumblr Site
+         * @type {Array}
+         */
     var video_posts = [],
+
+        /**
+         * Counter of videos found
+         * @type {Number}
+         */
         counter_videos_found = 0,
+
+         /**
+         * Offset The initial position in the list of items requested (to avoid 20 items limit per request)
+         * @type {Number}
+         */
         offset = 0,
+
+        /**
+         * URL of the Tumblr Site where to get the videos
+         * @type {String}
+         */
         tumblr_site;
 
+    // Topic Subscriptions
     $.Topic( "finishGetTumblrPosts" ).subscribe( function () {
         $("#migrate_youtube").removeClass("hidden");
     } );
 
-
+    // Events
     $("#get_tumblr_videos").bind("click", function () {
         tumblr_site =$("#tumblr_site input").val();
         $(this).attr("disabled","disabled");
         loadPosts( offset );
     });
 
+    /**
+     * Get Tumlbr posts via AJAXLoad.
+     * @param {String} offset The initial position in the list of items requested (to avoid 20 items limit per request)
+     */
     function loadPosts(offset) {
         $.ajax({
             url: "http://api.tumblr.com/v2/blog/" + tumblr_site + "/posts",
@@ -30,6 +54,10 @@
         });
     }
 
+    /**
+     * Update UI w/ new values after clicking "get videos from tumblr" button.
+     * @param {String} url The url of the Tumblr site
+     */
     function updateDomTumblrSite_Step1 (url) {
 
         $("#tumblr_site input").addClass("hidden");
@@ -43,6 +71,11 @@
 
     }
 
+    /**
+     * Update UI w/ new values after every group of data is received from the AJAX call.
+     * @param {Object} data Data of the youtube video (already filtered)
+     * @param {Number} total Total of videos found on Tumblr Site
+     */
     function updateDomEveryVideosFound_Step2 ( data, total ) {
 
        $("#getting_videos span").html(function(item, content) {
@@ -60,6 +93,14 @@
 
     }
 
+    /**
+     * Process videos received from API Tumblr
+     * - Update UI w/ new info every 20 items received
+     * - Do another AJAX call (loadPosts) if items received were 20
+     * - When finished, trigger the proper "finish" event
+     * @param {Object} data Data of the youtube video (already filtered)
+     * @param {Number} total Total of videos found on Tumblr Site
+     */
     function handleTumblrData (data) {
 
         var slug_treated, $slug, current_video, url_video,
@@ -103,4 +144,4 @@
 
     }
 
-})();
+}( jQuery );

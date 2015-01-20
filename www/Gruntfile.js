@@ -6,6 +6,22 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json')
   });
 
+  // jasmine
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.config('jasmine', {
+    pivotal: {
+      src: '<%= devFolder %>/js/**/*.js',
+      options: {
+        specs: '<%= devFolder %>/specs/*spec.js',
+        vendor: [
+          '<%= devFolder %>/bower_components/jquery/dist/jquery.js',
+          '<%= devFolder %>/bower_components/bluebird/js/browser/bluebird.js',
+          '<%= devFolder %>/modernizr/modernizr.custom.js',
+          '<%= devFolder %>/modernizr/details/details-test.js'
+        ]
+      }
+    }
+  });
 
   // targethtml
   grunt.loadNpmTasks('grunt-contrib-compass');
