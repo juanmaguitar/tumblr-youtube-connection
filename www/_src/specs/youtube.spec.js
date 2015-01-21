@@ -1,7 +1,6 @@
 describe("A youtube.js file that ", function() {
 
   it("subscribes to the 'finishGetTumblrPosts' topic to do some stuff", function() {
-    console.log ($.Topic);
       expect(true).toBe(true);
     });
 

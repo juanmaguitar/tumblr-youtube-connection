@@ -103,6 +103,9 @@
         <script src="_src/js/tumblr.js"></script>
         <script src="_src/js/youtube.js"></script>
 
+        <!-- starting point of the app -->
+        <script src="_src/js/main.js"></script>
+
         <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
         <!--<!(endif)-->
 

@@ -1,226 +1,243 @@
-!(function ( $ ) {
-    "use strict";
+!function ( $, win ) {
+	"use strict";
 
-        /**
-         * Percentage of videos added.
-         * @type {Number}
-         */
-    var percentage_add_videos = 0,
+	win.YOUTUMBLR = win.YOUTUMBLR || {};
+	win.YOUTUMBLR.youtube = win.YOUTUMBLR.youtube || {};
 
-        /**
-         * Total of videos found on Tumblr.
-         * @type {Number}
-         */
-        counter_videos_found = 0,
+	var oYoutube = win.YOUTUMBLR.youtube;
 
-        /**
-         * Videos added to Youtube
-         * @type {Number}
-         */
-        counter_add_videos = 0,
+	/**
+	* Percentage of videos added.
+	* @type {Number}
+	*/
+	var percentage_add_videos = 0,
 
-        /**
-         * Object containg data of the playlist created.
-         * @type {Object}
-         */
-        playlist_data = {},
+	/**
+	* Total of videos found on Tumblr.
+	* @type {Number}
+	*/
+	counter_videos_found = 0,
 
-        /**
-         * Array w/ videos found/to-insert.
-         * @type {}
-         */
-        video_posts;
+	/**
+	* Videos added to Youtube
+	* @type {Number}
+	*/
+	counter_add_videos = 0,
 
-    /* helper */
-    function getToday() {
+	/**
+	* Object containg data of the playlist created.
+	* @type {Object}
+	*/
+	playlist_data = {},
 
-        var today = new Date(),
-            dd = today.getDate(),
-            mm = today.getMonth()+1, //January is 0!
-            yyyy = today.getFullYear();
+	/**
+	* Array w/ videos found/to-insert.
+	* @type {}
+	*/
+	video_posts;
 
-        if( dd < 10 ) dd='0'+dd;
-        if (mm < 10) mm='0'+mm;
+	/* helper */
+	function getToday() {
 
-        return dd+'/'+mm+'/'+yyyy;
-    }
+		var today = new Date(),
+				dd = today.getDate(),
+				mm = today.getMonth()+1, //January is 0!
+				yyyy = today.getFullYear();
 
-    // Topic Subscriptions
-    $.Topic( "finishGetTumblrPosts" ).subscribe( function ( posts ) {
-        counter_videos_found = posts.length;
-        video_posts = posts;
-    });
+		if( dd < 10 ) dd='0'+dd;
+		if (mm < 10) mm='0'+mm;
 
-    // Events
-    $("#migrate_youtube").bind ("click", function() {
+		return dd+'/'+mm+'/'+yyyy;
 
-        $(this).attr("disabled","disabled");
+	}
 
-        promiseCreatePlaylist()
-            .then( afterPlaylistCreated )
-            .each( promiseAddToPlaylist )
-            .then( updateUIprocessCompleted );
+	// Topic Subscriptions
+	oYoutube.subscribeToTopics = function() {
 
-    });
+		var self = this;
 
-    /**
-     * Promise that calls the YouTube API to create a Playlist and returns another Promise (chaining) when is done.
-     */
-    function promiseCreatePlaylist() {
+		$.Topic( "finishGetTumblrPosts" ).subscribe( function ( posts ) {
+			counter_videos_found = posts.length;
+			video_posts = posts;
+			console.log (self);
+			self.setEvents();
+		});
 
-        var tumblr_site = $("#tumblr_site input").val(),
-            playlist_description = PLAYLIST_DESCRIPTION + tumblr_site;
+	};
 
-        playlist_description += "\n " + PLAYLIST_CREATION + getToday() + " from " + document.URL;
+	// Events
+	oYoutube.setEvents = function () {
 
-        return new Promise( function(resolve) {
+		var self = this;
 
-           gapi.client.youtube.playlists.insert({
-                part: 'snippet,status',
-                resource: {
-                    snippet: {
-                        title: "@"+tumblr_site,
-                        description: playlist_description
-                    },
-                    status: {
-                        privacyStatus: 'private'
-                    }
-                }
-           }).execute( resolve ); // resolve (response) --> complete the promise
+		$("#migrate_youtube").bind ("click", function() {
+			$(this).attr("disabled","disabled");
+			self.promiseCreatePlaylist()
+				.then( self.afterPlaylistCreated )
+				.each( self.promiseAddToPlaylist )
+				.then( updateUIprocessCompleted );
+		});
 
-        });
+	};
 
-    }
+	/**
+	* Promise that calls the YouTube API to create a Playlist and returns another Promise (chaining) when is done.
+	*/
+	oYoutube.promiseCreatePlaylist = function () {
 
-    /**
-     * Update UI after playlist creation and returns list of videos to be inserted in the playlist.
-     * @param {Objects} response API response
-     */
-    function afterPlaylistCreated (response){
+		var tumblr_site = $("#tumblr_site input").val(),
+				playlist_description = PLAYLIST_DESCRIPTION + tumblr_site;
 
-       var result = response.result;
+		playlist_description += "\n " + PLAYLIST_CREATION + getToday() + " from " + document.URL;
 
-        if (result) {
+		return new Promise( function(resolve) {
+			gapi.client.youtube.playlists.insert({
+				part: 'snippet,status',
+				resource: {
+					snippet: {
+						title: "@"+tumblr_site,
+						description: playlist_description
+					},
+					status: {
+						privacyStatus: 'private'
+					}
+				}
+			}).execute( resolve ); // resolve (response) --> complete the promise
+		});
 
-            playlist_data = {
-              id:  result.id,
-              title: result.snippet.title,
-              description: result.snippet.description,
+	};
 
-            };
+	/**
+	* Update UI after playlist creation and returns list of videos to be inserted in the playlist.
+	* @param {Objects} response API response
+	*/
+	oYoutube.afterPlaylistCreated = function(response){
 
-            updateDomPlaylistData_Step3 (playlist_data);
+		var result = response.result;
 
-        }
+		if (result) {
 
-        return video_posts; // return array of videos to be treated w/ each
-    }
+		playlist_data = {
+		id:  result.id,
+		title: result.snippet.title,
+		description: result.snippet.description,
 
-    /**
-    * Returns a Promise (chaining) that creates a new playlist in youTube (through its API) and solve it (the promise) once is created
-    * @param {Object} video Video custom data
-    * @returns {Object} Pronise
-    */
-    function promiseAddToPlaylist( video ){
+		};
 
-        var playlist_id = playlist_data.id,
-            details = {
-                videoId: video.video_id,
-                kind: 'youtube#video'
-              };
+		updateDomPlaylistData_Step3 (playlist_data);
 
-        return new Promise( function(resolve) {
+		}
 
-            gapi.client.youtube.playlistItems.insert({
-                part: 'snippet',
-                resource: {
-                    snippet: {
-                        playlistId:  playlist_id,
-                        resourceId: details
-                    }
-                }
-            }).execute( function (response) {
+		return video_posts; // return array of videos to be treated w/ each
 
-                counter_add_videos++;
-                percentage_add_videos = (counter_add_videos/counter_videos_found)*100;
+	};
 
-                updateUIafterVideoInserted(response, video, counter_add_videos, percentage_add_videos);
+	/**
+	* Returns a Promise (chaining) that creates a new playlist in youTube (through its API) and solve it (the promise) once is created
+	* @param {Object} video Video custom data
+	* @returns {Object} Pronise
+	*/
+	oYoutube.promiseAddToPlaylist = function( video ){
 
-                resolve(response);
-            });
-        } );
+		var playlist_id = playlist_data.id,
+				details = {
+					videoId: video.video_id,
+					kind: 'youtube#video'
+				};
 
-    }
+		return new Promise( function(resolve) {
+			gapi.client.youtube.playlistItems.insert({
+				part: 'snippet',
+				resource: {
+					snippet: {
+						playlistId:  playlist_id,
+						resourceId: details
+					}
+				}
+			}).execute( function (response) {
+				counter_add_videos++;
+				percentage_add_videos = (counter_add_videos/counter_videos_found)*100;
 
-    /**
-    * Update some UI elements to show which videos have been added
-    * @param {Object} response Response from the YouTube API after the adition of the video
-    * @param {Object} video Video custom data
-    * @param {Number} counter_add_videos Total of added videos
-    * @param {Number} percentage_add_videos Percentage of videos added from the total
-    */
-    function updateUIafterVideoInserted ( response, video, counter_add_videos, percentage_add_videos ) {
+				updateUIafterVideoInserted(response, video, counter_add_videos, percentage_add_videos);
 
-        var videoTitle = response.result.snippet.title,
-            videoId = response.result.snippet.resourceId.videoId,
-            videoUrl = video.url;
+				resolve(response);
+			});
+		});
 
-        $('#adding_videos strong').html(parseInt(percentage_add_videos,10)+"%");
-        $('#adding_videos span').html(function(item, content) {
-            return content+".";
-        });
+	};
 
-        $('#videos_addition_completed strong:nth-child(1)').html(counter_add_videos);
+	/**
+	* Update some UI elements to show which videos have been added
+	* @param {Object} response Response from the YouTube API after the adition of the video
+	* @param {Object} video Video custom data
+	* @param {Number} counter_add_videos Total of added videos
+	* @param {Number} percentage_add_videos Percentage of videos added from the total
+	*/
+	function updateUIafterVideoInserted ( response, video, counter_add_videos, percentage_add_videos ) {
 
-        $("#videos_addition_completed ol")
-            .append(
-                $("<li>")
-                    .html( video.embed_code )
-                    .append( $("<p>").html(video.slug) )
-            );
+		var videoTitle = response.result.snippet.title,
+			videoId = response.result.snippet.resourceId.videoId,
+			videoUrl = video.url;
 
-        optimizeYouTubeEmbeds();
+		$('#adding_videos strong').html(parseInt(percentage_add_videos,10)+"%");
 
-    }
+		$('#adding_videos span').html(
+			function(item, content) {
+				return content+".";
+			}
+		);
 
-    /**
-    * Updates UI to show the process have been completed
-    */
-    function updateUIprocessCompleted () {
+		$('#videos_addition_completed strong:nth-child(1)').html(counter_add_videos);
 
-        var updateLinkContent = function(i, content) {
-          return content+playlist_data.id;
-        };
+		$("#videos_addition_completed ol")
+			.append(
+				$("<li>")
+					.html( video.embed_code )
+					.append( $("<p>").html(video.slug) )
+				);
 
-        $("#process_completed").removeClass("hidden");
-        $("#process_completed a").attr("href", updateLinkContent );
+		optimizeYouTubeEmbeds();
 
-    }
+	}
 
-    /**
-    * Update UI to show data of the recently created playlist
-    * @param {Object} data Playlist info
-    */
-    function updateDomPlaylistData_Step3 (data) {
+	/**
+	* Updates UI to show the process have been completed
+	*/
+	function updateUIprocessCompleted () {
 
-        $('#playlist-id').html(data.id);
+		var updateLinkContent = function(i, content) {
+			return content+playlist_data.id;
+		};
 
-        $('#playlist-title').html(data.title);
-        $('#playlist_creation strong').html(data.title);
+		$("#process_completed").removeClass("hidden");
+		$("#process_completed a").attr("href", updateLinkContent );
 
-        $('#playlist-description').html(data.description);
+	}
 
-        $('#playlist_creation').removeClass("hidden");
-        $('#playlist-button').attr("disabled", "disabled");
+	/**
+	* Update UI to show data of the recently created playlist
+	* @param {Object} data Playlist info
+	*/
+	function updateDomPlaylistData_Step3 (data) {
 
-        $('#adding_videos em:nth-child(1)').html(counter_videos_found);
-        $('#adding_videos em:nth-child(2)').html(data.title);
-        $('#adding_videos em:nth-child(3)').html(percentage_add_videos+"%");
+		$('#playlist-id').html(data.id);
 
-        $('#adding_videos').removeClass("hidden");
-        $('#videos_addition_completed').removeClass("hidden");
-        $('#videos_addition_completed strong:nth-child(2)').html(data.title);
+		$('#playlist-title').html(data.title);
+		$('#playlist_creation strong').html(data.title);
 
-    }
+		$('#playlist-description').html(data.description);
 
-})( jQuery );
+		$('#playlist_creation').removeClass("hidden");
+		$('#playlist-button').attr("disabled", "disabled");
+
+		$('#adding_videos em:nth-child(1)').html(counter_videos_found);
+		$('#adding_videos em:nth-child(2)').html(data.title);
+		$('#adding_videos em:nth-child(3)').html(percentage_add_videos+"%");
+
+		$('#adding_videos').removeClass("hidden");
+		$('#videos_addition_completed').removeClass("hidden");
+		$('#videos_addition_completed strong:nth-child(2)').html(data.title);
+
+	}
+
+}( jQuery, window );

@@ -1,12 +1,20 @@
-describe("A tumblr.js file that ", function() {
+describe("A tumblr object that ", function() {
 
-	it("subscribes to the 'finishGetTumblrPosts' topic to do some stuff", function() {
-  		expect(true).toBe(true);
-  	});
+	describe("has a method 'subscribeToTopics' that", function() {
 
-	it("attach an event to the click of '#get_tumblr_videos' to start getting the videos", function() {
+		it("subscribe a callback to the topic 'finishGetTumblrPosts' ", function() {
 			expect(true).toBe(true);
-  	});
+		});
+
+	});
+
+	describe("has a method 'setEvents' that", function() {
+
+		it("attach an event to the click of '#get_tumblr_videos' to start getting the videos", function() {
+			expect(true).toBe(true);
+		});
+
+	});
 
 	describe("has a function 'loadPosts' that", function() {
 		it("requests the videos from Tumblr", 	function() {
@@ -17,7 +25,7 @@ describe("A tumblr.js file that ", function() {
   		});
   	});
 
-  	describe("has a function 'handleTumblrData' that", function() {
+    describe("has a function 'handleTumblrData' that", function() {
 		it("filters videos received to get only youtube ones and add them to a global (file scope) array", 	function() {
 			expect(true).toBe(true);
   		});

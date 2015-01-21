@@ -1,147 +1,170 @@
-!(function ( $ ) {
-    "use strict";
+!function ( $, win ) {
 
-        /**
-         * List of videos (objects) found on Tumblr Site
-         * @type {Array}
-         */
-    var video_posts = [],
+	"use strict";
 
-        /**
-         * Counter of videos found
-         * @type {Number}
-         */
-        counter_videos_found = 0,
+	win.YOUTUMBLR = win.YOUTUMBLR || {};
+	win.YOUTUMBLR.tumblr = win.YOUTUMBLR.tumblr  || {};
 
-         /**
-         * Offset The initial position in the list of items requested (to avoid 20 items limit per request)
-         * @type {Number}
-         */
-        offset = 0,
+	var oTumblr = win.YOUTUMBLR.tumblr;
 
-        /**
-         * URL of the Tumblr Site where to get the videos
-         * @type {String}
-         */
-        tumblr_site;
+	/**
+	 * List of videos (objects) found on Tumblr Site
+	 * @type {Array}
+	 */
+	var video_posts = [],
 
-    // Topic Subscriptions
-    $.Topic( "finishGetTumblrPosts" ).subscribe( function () {
-        $("#migrate_youtube").removeClass("hidden");
-    } );
+	/**
+	* Counter of videos found
+	* @type {Number}
+	*/
+	counter_videos_found = 0,
 
-    // Events
-    $("#get_tumblr_videos").bind("click", function () {
-        tumblr_site =$("#tumblr_site input").val();
-        $(this).attr("disabled","disabled");
-        loadPosts( offset );
-    });
+	/**
+	 * Offset The initial position in the list of items requested (to avoid 20 items limit per request)
+	 * @type {Number}
+	 */
+	offset = 0,
 
-    /**
-     * Get Tumlbr posts via AJAXLoad.
-     * @param {String} offset The initial position in the list of items requested (to avoid 20 items limit per request)
-     */
-    function loadPosts(offset) {
-        $.ajax({
-            url: "http://api.tumblr.com/v2/blog/" + tumblr_site + "/posts",
-            data: {
-                api_key: TUMBLR_API_KEY,
-                type: 'video',
-                offset: offset
-            },
-            dataType: "jsonp",
-            success: handleTumblrData
-        });
-    }
+	/**
+	* URL of the Tumblr Site where to get the videos
+	* @type {String}
+	*/
+	tumblr_site;
 
-    /**
-     * Update UI w/ new values after clicking "get videos from tumblr" button.
-     * @param {String} url The url of the Tumblr site
-     */
-    function updateDomTumblrSite_Step1 (url) {
+	// Topic Subscriptions
+	oTumblr.subscribeToTopics = function() {
 
-        $("#tumblr_site input").addClass("hidden");
-        $("#tumblr_site span").html(url);
+		$.Topic( "finishGetTumblrPosts" )
+			.subscribe( function tumblrCallback() {
+				$("#migrate_youtube").removeClass("hidden");
+			}
+		);
 
-        $("#getting_videos em").html(url);
-        $("#getting_videos").removeClass("hidden");
+	};
 
-        $("#tumblr_videos_found").removeClass("hidden");
-        $("#tumblr_videos_found em").html(url);
+	// Events
+	oTumblr.setEvents = function () {
 
-    }
+		var self = this;
 
-    /**
-     * Update UI w/ new values after every group of data is received from the AJAX call.
-     * @param {Object} data Data of the youtube video (already filtered)
-     * @param {Number} total Total of videos found on Tumblr Site
-     */
-    function updateDomEveryVideosFound_Step2 ( data, total ) {
+		$("#get_tumblr_videos").bind("click", function () {
+			tumblr_site =$("#tumblr_site input").val();
+			$(this).attr("disabled","disabled");
+			console.log (self);
+			self.loadPosts( offset );
+		});
 
-       $("#getting_videos span").html(function(item, content) {
-            return content+".";
-        });
+	};
 
-        $("#tumblr_videos_found strong").html( total );
+	/**
+	* Get Tumlbr posts via AJAXLoad.
+	* @param {String} offset The initial position in the list of items requested (to avoid 20 items limit per request)
+	*/
+	oTumblr.loadPosts = function(offset) {
 
-        $("#tumblr_videos_found ol")
-            .append(
-                $("<li>")
-                    .html( data.embed_code )
-                    .append( $("<p>").html(data.slug) )
-            );
+		var self = this;
 
-    }
+		$.ajax({
+			url: "http://api.tumblr.com/v2/blog/" + tumblr_site + "/posts",
+			data: {
+				api_key: TUMBLR_API_KEY,
+				type: 'video',
+				offset: offset
+			},
+			dataType: "jsonp",
+			success: self.handleTumblrData
+		});
 
-    /**
-     * Process videos received from API Tumblr
-     * - Update UI w/ new info every 20 items received
-     * - Do another AJAX call (loadPosts) if items received were 20
-     * - When finished, trigger the proper "finish" event
-     * @param {Object} data Data of the youtube video (already filtered)
-     * @param {Number} total Total of videos found on Tumblr Site
-     */
-    function handleTumblrData (data) {
+	};
 
-        var slug_treated, $slug, current_video, url_video,
-            total_posts = data.response.total_posts;
+	/**
+	* Process videos received from API Tumblr
+	* - Update UI w/ new info every 20 items received
+	* - Do another AJAX call (loadPosts) if items received were 20
+	* - When finished, trigger the proper "finish" event
+	* @param {Object} data Data of the youtube video (already filtered)
+	* @param {Number} total Total of videos found on Tumblr Site
+	*/
+	oTumblr.handleTumblrData = function (data) {
 
-        updateDomTumblrSite_Step1 ( tumblr_site ) ;
+		var self = oTumblr;
 
-        $.each(data.response.posts, function(i, item) {
+		var slug_treated, $slug, current_video, url_video,
+				total_posts = data.response.total_posts;
 
-            if ( /youtube/.test(item.permalink_url) ) {
+		updateDomTumblrSite_Step1 ( tumblr_site ) ;
 
-                ++counter_videos_found;
-                slug_treated = item.slug.split("-").join(" ");
-                url_video = item.permalink_url ;
+		$.each(data.response.posts, function(i, item) {
+			if ( /youtube/.test(item.permalink_url) ) {
 
-                current_video = {
-                    id: item.id,
-                    video_id: url_video.replace("https://www.youtube.com/watch?v=",""),
-                    url: url_video,
-                    slug: slug_treated,
-                    embed_code: item.player[0].embed_code
-                };
+				++counter_videos_found;
+				slug_treated = item.slug.split("-").join(" ");
+				url_video = item.permalink_url ;
 
-                video_posts.push ( current_video );
+				current_video = {
+					id: item.id,
+					video_id: url_video.replace("https://www.youtube.com/watch?v=",""),
+					url: url_video,
+					slug: slug_treated,
+					embed_code: item.player[0].embed_code
+				};
 
-                updateDomEveryVideosFound_Step2 ( current_video, counter_videos_found );
+				video_posts.push ( current_video );
 
+				updateDomEveryVideosFound_Step2 ( current_video, counter_videos_found );
+			}
 
-            }
-        });
+		});
 
-        if (data.response.posts.length == 20) {
-            optimizeYouTubeEmbeds();
-            offset += 20;
-            loadPosts(offset);
-        }
-        else {
-            optimizeYouTubeEmbeds();
-            $.Topic( "finishGetTumblrPosts" ).publish(video_posts);
-        }
+		if (data.response.posts.length == 20) {
+			optimizeYouTubeEmbeds();
+			offset += 20;
+			self.loadPosts(offset);
+		}
+		else {
+			optimizeYouTubeEmbeds();
+			$.Topic( "finishGetTumblrPosts" ).publish(video_posts);
+		}
 
-    }
+	};
 
-})( jQuery );
+	/**
+	* Update UI w/ new values after clicking "get videos from tumblr" button.
+	* @param {String} url The url of the Tumblr site
+	*/
+	function updateDomTumblrSite_Step1 (url) {
+
+		$("#tumblr_site input").addClass("hidden");
+		$("#tumblr_site span").html(url);
+
+		$("#getting_videos em").html(url);
+		$("#getting_videos").removeClass("hidden");
+
+		$("#tumblr_videos_found").removeClass("hidden");
+		$("#tumblr_videos_found em").html(url);
+
+	}
+
+	/**
+	* Update UI w/ new values after every group of data is received from the AJAX call.
+	* @param {Object} data Data of the youtube video (already filtered)
+	* @param {Number} total Total of videos found on Tumblr Site
+	*/
+	function updateDomEveryVideosFound_Step2 ( data, total ) {
+
+		$("#getting_videos span").html(function(item, content) {
+			return content+".";
+		});
+
+		$("#tumblr_videos_found strong").html( total );
+
+		$("#tumblr_videos_found ol")
+			.append(
+				$("<li>")
+					.html( data.embed_code )
+					.append( $("<p>").html(data.slug) )
+			);
+
+	}
+
+}( jQuery, window );

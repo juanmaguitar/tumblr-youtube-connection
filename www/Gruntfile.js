@@ -10,7 +10,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.config('jasmine', {
     pivotal: {
-      src: '<%= devFolder %>/js/**/*.js',
+      src: [
+         '<%= devFolder %>/js/plugins/*.js',
+          '<%= devFolder %>/js/config.js',
+          '<%= devFolder %>/js/auth.js',
+          '<%= devFolder %>/js/tumblr.js',
+          '<%= devFolder %>/js/youtube.js',
+          '<%= devFolder %>/js/main.js'
+      ],
       options: {
         specs: '<%= devFolder %>/specs/*spec.js',
         vendor: [
@@ -71,6 +78,7 @@ module.exports = function(grunt) {
     ],
     options: {
       // options here to override JSHint defaults
+      "expr" : true,
       globals: {
         jQuery: true,
         console: true,
@@ -95,7 +103,8 @@ module.exports = function(grunt) {
           '<%= devFolder %>/js/plugins/*.js',
           '<%= devFolder %>/js/config.js',
           '<%= devFolder %>/js/auth.js',
-          '<%= devFolder %>/js/*.js'
+          '<%= devFolder %>/js/*.js',
+          '<%= devFolder %>/js/main.js'
         ],
         dest: '<%= devFolder %>/tmp/<%= pkg.name %>.js'
       }
