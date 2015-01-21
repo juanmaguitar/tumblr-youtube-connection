@@ -34,6 +34,7 @@
 	// Topic Subscriptions
 	oTumblr.subscribeToTopics = function() {
 
+debugger;
 		$.Topic( "finishGetTumblrPosts" )
 			.subscribe( function tumblrCallback() {
 				$("#migrate_youtube").removeClass("hidden");

@@ -59,7 +59,6 @@
 		$.Topic( "finishGetTumblrPosts" ).subscribe( function ( posts ) {
 			counter_videos_found = posts.length;
 			video_posts = posts;
-			console.log (self);
 			self.setEvents();
 		});
 

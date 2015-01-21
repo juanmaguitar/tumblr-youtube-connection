@@ -2,11 +2,11 @@
 	"use strict";
 
 	var	oTumblr = win.YOUTUMBLR.tumblr,
-		oYoutube = win.YOUTUMBLR.youtube;
+			oYoutube = win.YOUTUMBLR.youtube;
 
 	oTumblr.subscribeToTopics();
 	oYoutube.subscribeToTopics();
 
-    oTumblr.setEvents();
+	oTumblr.setEvents();
 
 }( jQuery, window );
