@@ -64,6 +64,11 @@ module.exports = function(grunt) {
       files: {
         'index.html' : 'index.html.tpl'
       }
+    },
+    prod_debug: {
+      files: {
+        'index.html' : 'index.html.tpl'
+      }
     }
   });
 
@@ -103,7 +108,8 @@ module.exports = function(grunt) {
           '<%= devFolder %>/js/plugins/*.js',
           '<%= devFolder %>/js/config.js',
           '<%= devFolder %>/js/auth.js',
-          '<%= devFolder %>/js/*.js',
+          '<%= devFolder %>/js/tumblr.js',
+          '<%= devFolder %>/js/youtube.js',
           '<%= devFolder %>/js/main.js'
         ],
         dest: '<%= devFolder %>/tmp/<%= pkg.name %>.js'
@@ -127,14 +133,21 @@ module.exports = function(grunt) {
   /* watch */
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.config('watch', {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      all : {
+        files: ['<%= jshint.files %>', '<%= devFolder %>/scss/*'],
+        tasks: ['jshint', 'compass:dev']
+      },
+      sass : {
+        files: [ '<%= devFolder %>/scss/*', './*.tpl' ],
+        tasks: [ 'compass:dev', 'targethtml:dev' ]
+      }
   });
 
 
   grunt.registerTask('test', ['jshint']);
   grunt.registerTask('dev', ['jshint', 'targethtml:dev', 'compass:dev']);
   grunt.registerTask('prod', ['jshint', 'targethtml:prod', 'concat', 'uglify', 'compass:prod']);
+  grunt.registerTask('prod_debug', [ 'targethtml:prod_debug', 'concat', 'compass:dev']);
   grunt.registerTask('default', ['jshint', 'targethtml:dev', 'compass:dev']);
 
 };

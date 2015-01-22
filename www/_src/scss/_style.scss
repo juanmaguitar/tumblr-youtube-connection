@@ -1,14 +1,13 @@
-.container { margin:1em;}
-.hidden { display:none !important; }
-.ok { color:green; }
-
-button[disabled] {
-	color:#ddd;
+body {
+	background: #3C7670;
+	color:#FFF;
+	font-size:28px;
+	font-family: 'Montserrat', sans-serif;
 }
 
 dl {
 	dt { float:left; clear:left; }
-	dd { font-weight:bold; -webkit-margin-start: 10px; }
+	dd { -webkit-margin-start: 10px; }
 }
 
 details {
@@ -18,6 +17,109 @@ details {
 details, summary {
 	cursor: pointer;
 }
+
+button {
+	display: block;
+	margin: 1em auto;
+	background: #1BBE9E;
+	border: 1px solid #1BBE9E;
+	color: #FFF;
+	text-transform: uppercase;
+	padding: .7em 2em;
+
+	&[disabled] {
+		background: #CCC;
+		text-decoration:line-through;
+	}
+}
+
+#logo {
+	margin:3em auto;
+	width: 200px;
+	span {
+		background: #F86100;
+		margin: 0 .3em;
+		padding: .2em .4em;
+		border-radius: 5px;
+	}
+}
+
+#tumblr_site {
+
+	&.disabled {
+		dl { background: #3C7670; }
+	}
+	dl {
+		margin:0 auto;
+		color: #FFF;
+		font-weight: normal;
+		background: #569389;
+		width: 700px;
+		padding:.5em;
+		border:10px solid #34887C;
+		dt {
+			margin-left:1em;
+			margin-right:.5em;
+			margin-top:0.3em;
+		}
+		dd input {
+			background: #569389;
+			border: 1px solid #569389;
+			border-bottom: 1px solid #FFF;
+			&[disabled] {
+					border-bottom: 1px solid #569389;
+					text-align:center;
+					background: #3C7670;
+					border: none;
+			}
+		}
+	}
+}
+
+#tumblr_videos_found {
+
+	details {
+		margin:3em auto;
+		width: 900px;
+		word-wrap: break-word;
+		border-bottom:1px dotted #FFF;
+		summary {
+			margin-left: 240px;
+			padding-bottom: .3em;
+		}
+		& > div {
+			& {
+				/* Flex-Box */
+				display: flex;
+				flex-direction: column;
+				flex-wrap: wrap;
+				align-items: stretch;
+				align-content: flex-start;
+
+				height: 350px;
+				width: 100%;
+				overflow-x: hidden;
+				overflow-y: scroll;
+				border: 1px solid #ccc;
+			}
+			ol {
+				li {
+					display:inline-block;
+					margin:10px;
+					width: 250px;
+					p { font-size: 20px; }
+				}
+			}
+		}
+	}
+}
+
+.container { margin:1em;}
+.hidden { display:none !important; }
+.ok { color:green; }
+
+
+
 
 #tumblr_videos {
 	& {
@@ -31,26 +133,5 @@ details, summary {
 	}
 }
 
-.videos_container {
-	& {
-		height: 350px;
-		width: 100%;
-		overflow-x: scroll;
-		overflow-y: hidden;
-		border: 1px solid #ccc;
-	}
-	ol {
-		& { display: inline-flex; }
-		li {
-			display:inline-block;
-			margin:10px;
-			width: 250px;
-		}
-	}
 
-}
 
-#getting_videos {
-	width: 100%;
-	word-wrap: break-word;
-}

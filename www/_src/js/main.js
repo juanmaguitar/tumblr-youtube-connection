@@ -1,12 +1,11 @@
 !function ( $, win ) {
 	"use strict";
 
-	var	oTumblr = win.YOUTUMBLR.tumblr,
-			oYoutube = win.YOUTUMBLR.youtube;
+	win.YOUTUMBLR.tumblr
+		.subscribeToTopics()
+		.setEvents();
 
-	oTumblr.subscribeToTopics();
-	oYoutube.subscribeToTopics();
-
-	oTumblr.setEvents();
+	win.YOUTUMBLR.youtube
+		.subscribeToTopics();
 
 }( jQuery, window );

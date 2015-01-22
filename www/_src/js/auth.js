@@ -27,15 +27,13 @@ function handleAuthResult(authResult) {
   if (authResult.status.signed_in) {
     // Auth was successful; hide the things related to prompting for auth and show the things
     // that should be visible after auth succeeds.
-    $('.pre-auth').hide();
     $('body').addClass("js-oauth");
-    $("#migrate_youtube").removeAttr("disabled");
     loadAPIClientInterfaces();
   } else {
     // Make the #login-link clickable, and attempt a non-immediate OAuth 2 client flow.
     // The current function will be called when that flow is complete.
+    $('.pre-auth').removeClass("hidden");
     $('#login-link').click(function() {
-      console.log ("login-link");
       gapi.auth.authorize({
         client_id: OAUTH2_CLIENT_ID,
         scope: OAUTH2_SCOPES,

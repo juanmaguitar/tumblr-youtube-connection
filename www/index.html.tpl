@@ -12,40 +12,50 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <!--(if target dev)><!-->
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+
+        <!--(if target dev || prod_debug )><!-->
         <link rel="stylesheet" href="_src/css/main.css">
         <!--<!(endif)-->
 
-        <!--(if target prod)><!-->
+        <!--(if target prod )><!-->
         <link rel="stylesheet" href="_dist/main.css">
         <!--<!(endif)-->
 
     </head>
     <body>
+
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
          <div class="container">
 
-             <dl>
-                 <dt>Tumblr site -> </dt>
-                 <dd id="tumblr_site">http://<input type="text" size="50" value="virginmobileusa.tumblr.com" /><span></span></dd>
-            </dl>
-            <button id="get_tumblr_videos">get videos from tumblr</button >
+            <p id="logo">You<span>Tumblr</span></p>
 
-            <p id="getting_videos" class="hidden">Getting videos from http://<em></em><br/><span></span></p>
+            <p id="login-container" class="pre-auth hidden">This application requires access to your YouTube account. Please <a href="#" id="login-link">authorize</a> to continue.</p>
 
-            <details id="tumblr_videos_found" class="hidden" data-videos-found="">
-                <summary><strong></strong> youtube videos found on http://<em></em></summary>
-                <div class="videos_container">
-                    <ol></ol>
-                </div>
-            </details>
+            <section id="tumblr_site">
+                 <dl>
+                     <dt>http://</dt>
+                     <dd><input class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
+                </dl>
+                <button class="ui-tumblr">get videos</button >
+            </section>
 
-            <p id="login-container" class="pre-auth">This application requires access to your YouTube account. Please <a href="#" id="login-link">authorize</a> to continue.</p>
+            <section id="tumblr_videos_found" class="hidden">
+                <details data-videos-found="">
+                    <summary><strong></strong> youtube videos found</summary>
+                    <div>
+                        <ol></ol>
+                    </div>
+                </details>
+            </section>
 
-            <button id="migrate_youtube" disabled="disabled" class="hidden">create playlist in youtube w/ these videos</button >
+            <section id="tumblr_to_youtube" class="hidden">
+                <button >add to youtube</button >
+            </section>
+
 
             <details id="playlist_creation" class="hidden">
                 <summary class="ok">Playlist <strong></strong> created!!</summary>
@@ -68,6 +78,7 @@
                     <ol></ol>
                 </div>
             </details>
+
 
             <p id="process_completed" class="hidden"><strong>Process Completed!!</strong> <a href="https://www.youtube.com/playlist?list=" target="_blank">Check</a> your playlist now</p>
 
@@ -111,6 +122,13 @@
 
         <!--(if target prod)><!-->
         <script src="_dist/tumblr-youtube-connection.min.js"></script>
+        <!--<!(endif)-->
+
+        <!--(if target prod_debug)><!-->
+        <script src="_src/tmp/tumblr-youtube-connection.js"></script>
+        <!--<!(endif)-->
+
+        <!--(if target prod || prod_debug )><!-->
         <script>
             Modernizr.load(
                 {
