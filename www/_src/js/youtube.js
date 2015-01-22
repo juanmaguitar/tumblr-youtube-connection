@@ -16,7 +16,7 @@
 	* Total of videos found on Tumblr.
 	* @type {Number}
 	*/
-	counter_videos_found = 0,
+	total_videos = 0,
 
 	/**
 	* Videos added to Youtube
@@ -34,7 +34,13 @@
 	* Array w/ videos found/to-insert.
 	* @type {}
 	*/
-	video_posts;
+	video_posts,
+
+	/**
+	 * Button to get tumblr videos
+	 * @type {jQuery}
+	 */
+	$button_add_youtube = $("#tumblr_to_youtube");
 
 	/* helper */
 	function getToday() {
@@ -57,8 +63,9 @@
 		var self = this;
 
 		$.Topic( "finishGetTumblrPosts" ).subscribe( function ( posts ) {
-			counter_videos_found = posts.length;
+			total_videos = posts.length;
 			video_posts = posts;
+			$("#tumblr_to_youtube").removeClass("hidden");
 			self.setEvents();
 		});
 
@@ -69,8 +76,9 @@
 
 		var self = this;
 
-		$("#migrate_youtube").bind ("click", function() {
+		$button_add_youtube.bind ("click", function() {
 			$(this).attr("disabled","disabled");
+			$("#migration_progress").removeClass("hidden");
 			self.promiseCreatePlaylist()
 				.then( self.afterPlaylistCreated )
 				.each( self.promiseAddToPlaylist )
@@ -115,19 +123,15 @@
 		var result = response.result;
 
 		if (result) {
-
-		playlist_data = {
-		id:  result.id,
-		title: result.snippet.title,
-		description: result.snippet.description,
-
-		};
-
-		updateDomPlaylistData_Step3 (playlist_data);
-
+			playlist_data = {
+				id:  result.id,
+				title: result.snippet.title,
+				description: result.snippet.description,
+			};
+			updateUiPlaylist(playlist_data);
 		}
 
-		return video_posts; // return array of videos to be treated w/ each
+		return video_posts; // return array of videos to be treated w/ each (bluebird)
 
 	};
 
@@ -155,7 +159,7 @@
 				}
 			}).execute( function (response) {
 				counter_add_videos++;
-				percentage_add_videos = (counter_add_videos/counter_videos_found)*100;
+				percentage_add_videos = (counter_add_videos/total_videos)*100;
 
 				updateUIafterVideoInserted(response, video, counter_add_videos, percentage_add_videos);
 
@@ -178,35 +182,41 @@
 			videoId = response.result.snippet.resourceId.videoId,
 			videoUrl = video.url;
 
-		$('#adding_videos strong').html(parseInt(percentage_add_videos,10)+"%");
+		$('#percentage').html(parseInt(percentage_add_videos,10)+"%");
 
+/*
 		$('#adding_videos span').html(
 			function(item, content) {
 				return content+".";
 			}
 		);
+*/
+		$('#adding_videos strong').html(counter_add_videos);
+		//$('#videos_addition_completed strong:nth-child(1)').html(counter_add_videos);
 
-		$('#videos_addition_completed strong:nth-child(1)').html(counter_add_videos);
-
+/*
 		$("#videos_addition_completed ol")
 			.append(
 				$("<li>")
 					.html( video.embed_code )
 					.append( $("<p>").html(video.slug) )
 				);
-
-		optimizeYouTubeEmbeds();
+*/
+	//	optimizeYouTubeEmbeds();
 
 	}
+
+
+		function updateLinkContent(i, content) {
+			return content+playlist_data.id;
+		};
 
 	/**
 	* Updates UI to show the process have been completed
 	*/
 	function updateUIprocessCompleted () {
 
-		var updateLinkContent = function(i, content) {
-			return content+playlist_data.id;
-		};
+
 
 		$("#process_completed").removeClass("hidden");
 		$("#process_completed a").attr("href", updateLinkContent );
@@ -217,8 +227,14 @@
 	* Update UI to show data of the recently created playlist
 	* @param {Object} data Playlist info
 	*/
-	function updateDomPlaylistData_Step3 (data) {
+	function updateUiPlaylist (data) {
 
+		$('#adding_videos em').html(total_videos);
+		$('#adding_videos a')
+			.attr("href", updateLinkContent )
+			.html(data.title);
+
+		/*
 		$('#playlist-id').html(data.id);
 
 		$('#playlist-title').html(data.title);
@@ -229,13 +245,14 @@
 		$('#playlist_creation').removeClass("hidden");
 		$('#playlist-button').attr("disabled", "disabled");
 
-		$('#adding_videos em:nth-child(1)').html(counter_videos_found);
+		$('#adding_videos em:nth-child(1)').html(total_videos);
 		$('#adding_videos em:nth-child(2)').html(data.title);
 		$('#adding_videos em:nth-child(3)').html(percentage_add_videos+"%");
 
 		$('#adding_videos').removeClass("hidden");
 		$('#videos_addition_completed').removeClass("hidden");
 		$('#videos_addition_completed strong:nth-child(2)').html(data.title);
+		*/
 
 	}
 

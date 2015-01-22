@@ -33,6 +33,12 @@ button {
 	}
 }
 
+a { color: #6ABE92; }
+
+.container { margin:1em;}
+.hidden { display:none !important; }
+.ok { color:green; }
+
 #logo {
 	margin:3em auto;
 	width: 200px;
@@ -114,13 +120,6 @@ button {
 	}
 }
 
-.container { margin:1em;}
-.hidden { display:none !important; }
-.ok { color:green; }
-
-
-
-
 #tumblr_videos {
 	& {
 		float:left;
@@ -131,6 +130,14 @@ button {
 		& > p { text-transform: capitalize; }
 		a { margin:1em; }
 	}
+}
+
+#adding_videos {
+	& {
+		width: 730px;
+		margin: 2em auto;
+	}
+
 }
 
 

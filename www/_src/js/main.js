@@ -1,11 +1,7 @@
 !function ( $, win ) {
 	"use strict";
 
-	win.YOUTUMBLR.tumblr
-		.subscribeToTopics()
-		.setEvents();
-
-	win.YOUTUMBLR.youtube
-		.subscribeToTopics();
+	win.YOUTUMBLR.youtube.subscribeToTopics();
+	win.YOUTUMBLR.tumblr.setEvents();
 
 }( jQuery, window );

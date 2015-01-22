@@ -44,20 +44,6 @@
 			$input_user_tumblr = $("#tumblr_site input");
 
 
-
-	// Topic Subscriptions
-	oTumblr.subscribeToTopics = function() {
-
-		$.Topic( "finishGetTumblrPosts" )
-			.subscribe( function tumblrCallback() {
-				$("#tumblr_to_youtube").removeClass("hidden");
-			}
-		);
-
-		return this;
-
-	};
-
 	// Events
 	oTumblr.setEvents = function () {
 

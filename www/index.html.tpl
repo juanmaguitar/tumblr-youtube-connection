@@ -38,7 +38,7 @@
             <section id="tumblr_site">
                  <dl>
                      <dt>http://</dt>
-                     <dd><input class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
+                     <dd><input value="virginmobileusa" class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
                 </dl>
                 <button class="ui-tumblr">get videos</button >
             </section>
@@ -52,33 +52,21 @@
                 </details>
             </section>
 
-            <section id="tumblr_to_youtube" class="hidden">
-                <button >add to youtube</button >
+            <button id="tumblr_to_youtube" class="hidden">add to youtube</button >
+
+            <section id="migration_progress" class="hidden">
+                <p id="adding_videos" ><strong></strong> videos of <em></em> added to playlist: <a target="_blank" href="https://www.youtube.com/playlist?list="></a></p>
+                <p id="percentage" ></p>
             </section>
 
-
-            <details id="playlist_creation" class="hidden">
-                <summary class="ok">Playlist <strong></strong> created!!</summary>
-                <dl>
-                    <dt>Playlist Id: </dt>
-                    <dd id="playlist-id"></dd>
-                    <dt>Playlist Title: </dt>
-                    <dd id="playlist-title"></dd>
-                    <dt>Playlist Description: </dt>
-                    <dd id="playlist-description"></dd>
-                </dl>
-                <!-- <button id="playlist-button" disabled>Create a new Private Playlist</button> -->
-            </details>
-
-            <p id="adding_videos" class="hidden">Adding <em></em> videos to playlist <em></em> <strong></strong><br/><span></span></p>
-
+<!--
             <details id="videos_addition_completed" class="hidden">
                 <summary class="ok"><strong></strong> videos added to playlist <strong></strong>!!</summary>
                 <div class="videos_container">
                     <ol></ol>
                 </div>
             </details>
-
+-->
 
             <p id="process_completed" class="hidden"><strong>Process Completed!!</strong> <a href="https://www.youtube.com/playlist?list=" target="_blank">Check</a> your playlist now</p>
 
