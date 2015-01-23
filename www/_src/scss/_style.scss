@@ -137,7 +137,7 @@ a { color: #6ABE92; }
 
 #migration_progress {
 	& {
-		margin:3em auto;
+		margin:3em auto 5em;
 		width: 900px;
 		clear:both;
 	}
@@ -156,8 +156,10 @@ a { color: #6ABE92; }
 	svg {
 		position: absolute;
 		width: 463px;
-		left: 400px;
-		bottom: -284px;
+		/*left: 530px;
+		bottom: -280px;*/
+		margin-top: 6em;
+		margin-left: 7.6em;
 	}
 
 	#adding_videos {

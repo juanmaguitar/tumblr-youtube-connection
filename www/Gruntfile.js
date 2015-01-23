@@ -125,7 +125,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           '<%= distFolder %>/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>' ],
-          '<%= distFolder %>/details-pollyfill.min.js': ['modernizr/details/details-pollyfill.js' ]
+          '<%= distFolder %>/details-pollyfill.min.js': ['<%= devFolder %>/modernizr/details/details-pollyfill.js' ]
         }
       }
   });
