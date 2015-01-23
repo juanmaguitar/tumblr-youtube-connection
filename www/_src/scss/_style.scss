@@ -140,5 +140,24 @@ a { color: #6ABE92; }
 
 }
 
+#percentage {
+	margin:0;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	color: #fff;
 
-
+	text-align: center;
+	border: 10px solid #34887C;
+	p {
+		margin:2.5em 0;
+		strong {
+			font-size: 2.5em;
+		}
+		span {
+			font-size: .7em;
+			display: block;
+			margin: .5em;
+		}
+	}
+}

@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     }
   });
 
-  // targethtml
+  // compass
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.config('compass', {
     dev: {
@@ -38,7 +38,6 @@ module.exports = function(grunt) {
         sassDir: ['_src/scss'],
         cssDir: ['_src/css'],
         outputStyle : 'nested',
-        sourcemap: true,
         environment: 'development'
       }
     },

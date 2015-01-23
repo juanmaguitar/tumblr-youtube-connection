@@ -207,9 +207,9 @@
 	}
 
 
-		function updateLinkContent(i, content) {
-			return content+playlist_data.id;
-		};
+	function updateLinkContent(i, content) {
+		return content+playlist_data.id;
+	}
 
 	/**
 	* Updates UI to show the process have been completed

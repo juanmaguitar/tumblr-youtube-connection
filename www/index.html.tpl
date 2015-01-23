@@ -38,7 +38,7 @@
             <section id="tumblr_site">
                  <dl>
                      <dt>http://</dt>
-                     <dd><input value="virginmobileusa" class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
+                     <dd><input value="" class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
                 </dl>
                 <button class="ui-tumblr">get videos</button >
             </section>
@@ -56,8 +56,19 @@
 
             <section id="migration_progress" class="hidden">
                 <p id="adding_videos" ><strong></strong> videos of <em></em> added to playlist: <a target="_blank" href="https://www.youtube.com/playlist?list="></a></p>
-                <p id="percentage" ></p>
+
+                <!--
+                <div class="progress-radial progress-50">
+                    <div class="overlay">25%</div>
+                </div>
+
+                <div id="percentage">
+                    <p><strong>100</strong>%
+                    <span>videos added</span></p>
+                </div>
+                -->
             </section>
+
 
 <!--
             <details id="videos_addition_completed" class="hidden">

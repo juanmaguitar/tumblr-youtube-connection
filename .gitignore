@@ -10,6 +10,7 @@ _src/js/config.js
 www/_src/css/
 www/_dist/
 www/index.html
+*.bkp
 
 #################
 ## Eclipse
