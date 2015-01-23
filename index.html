@@ -14,11 +14,11 @@
 
         <link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
 
-        
 
-        
-        <link rel="stylesheet" href="_dist/main.css">
-        
+
+
+        <link rel="stylesheet" href="dist/main.css">
+
 
     </head>
     <body>
@@ -100,15 +100,15 @@
 
         </div> <!-- @end container -->
 
-        
 
-        
-        <script src="_dist/tumblr-youtube-connection.min.js"></script>
-        
 
-        
 
-        
+        <script src="dist/tumblr-youtube-connection.min.js"></script>
+
+
+
+
+
         <script>
             Modernizr.load(
                 {
@@ -116,7 +116,7 @@
                     nope: [
                         // TO-DO: Fix double loading w/ yepnope.js (try another loaders)
                         // http://stackoverflow.com/questions/6400067/what-is-causing-my-scripts-to-be-requested-twice-while-using-modernizr-load-yep
-                        '_dist/details-pollyfill.min.js'
+                        'dist/details-pollyfill.min.js'
                     ],
                     complete: function() {
                         jQuery().details ?  $('details').details() : null ;
@@ -125,7 +125,7 @@
             );
         </script>
         <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-        
+
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--
