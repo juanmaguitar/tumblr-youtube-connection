@@ -38,7 +38,7 @@
             <section id="tumblr_site">
                  <dl>
                      <dt>http://</dt>
-                     <dd><input value="" class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
+                     <dd><input value="virginmobileusa" class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
                 </dl>
                 <button class="ui-tumblr">get videos</button >
             </section>
@@ -54,20 +54,39 @@
 
             <button id="tumblr_to_youtube" class="hidden">add to youtube</button >
 
-            <section id="migration_progress" class="hidden">
-                <p id="adding_videos" ><strong></strong> videos of <em></em> added to playlist: <a target="_blank" href="https://www.youtube.com/playlist?list="></a></p>
+			<section id="migration_progress" class="hidden">
 
-                <!--
-                <div class="progress-radial progress-50">
-                    <div class="overlay">25%</div>
-                </div>
+				<p id="adding_videos" ><strong>0</strong> videos of <em></em> added to playlist: <a target="_blank" href="https://www.youtube.com/playlist?list="></a></p>
 
-                <div id="percentage">
-                    <p><strong>100</strong>%
-                    <span>videos added</span></p>
-                </div>
-                -->
-            </section>
+				<div>
+
+					<!-- arrow -->
+			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 496.3 147.6" enable-background="new 0 0 496.3 147.6" xml:space="preserve">
+				<g>
+					<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="78.9577" x2="478.3884" y2="78.9577">
+						<stop  offset="0.2423" style="stop-color:#38B399"/>
+						<stop  offset="1" style="stop-color:#FFFFFF"/>
+					</linearGradient>
+					<path fill="none" stroke="url(#SVGID_1_)" stroke-width="5" stroke-miterlimit="10" d="M2.2,11.4c85.8,170,350.4,181.1,474.2,15.4"
+						/>
+					<polygon fill="#FFFFFF" points="460.6,15.1 496.3,0 491.5,38.5 	"/>
+				</g>
+			</svg>
+
+					<img src="img/logo-tumbrl.png">
+					<div id="percentage" class="progress-0">
+						<div class="overlay">
+							<p><strong>0</strong>%
+							<span>videos added</span></p>
+						</div>
+					</div>
+					<img src="img/logo-youtube.png">
+				</div>
+
+			</section>
+
+			<p id="process_completed" class="hidden"><strong>Process Completed!!</strong> <a href="https://www.youtube.com/playlist?list=" target="_blank">Check</a> your playlist now</p>
 
 
 <!--
@@ -79,7 +98,7 @@
             </details>
 -->
 
-            <p id="process_completed" class="hidden"><strong>Process Completed!!</strong> <a href="https://www.youtube.com/playlist?list=" target="_blank">Check</a> your playlist now</p>
+
 
         </div> <!-- @end container -->
 

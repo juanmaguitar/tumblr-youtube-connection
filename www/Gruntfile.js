@@ -74,22 +74,23 @@ module.exports = function(grunt) {
   // jshint
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.config('jshint', {
-    files: [
-      'Gruntfile.js',
-      '<%= devFolder %>/modernizr/details/*.js',
-      '<%= devFolder %>/js/plugins/*.js',
-      '<%= devFolder %>/js/*'
-    ],
-    options: {
-      // options here to override JSHint defaults
-      "expr" : true,
-      globals: {
-        jQuery: true,
-        console: true,
-        module: true,
-        document: true
-      }
-    }
+		files: [
+			'Gruntfile.js',
+			'<%= devFolder %>/modernizr/details/*.js',
+			'<%= devFolder %>/js/plugins/*.js',
+			'<%= devFolder %>/js/*'
+		],
+		options: {
+			// options here to override JSHint defaults
+			expr : true,
+			debug: true,
+			globals: {
+				jQuery: true,
+				console: true,
+				module: true,
+				document: true
+			}
+		}
   });
 
   /* concat */
@@ -134,7 +135,7 @@ module.exports = function(grunt) {
   grunt.config('watch', {
       all : {
         files: ['<%= jshint.files %>', '<%= devFolder %>/scss/*'],
-        tasks: ['jshint', 'compass:dev']
+        tasks: ['jshint', 'compass:dev', 'targethtml:dev']
       },
       sass : {
         files: [ '<%= devFolder %>/scss/*', './*.tpl' ],
@@ -143,7 +144,6 @@ module.exports = function(grunt) {
   });
 
 
-  grunt.registerTask('test', ['jshint']);
   grunt.registerTask('dev', ['jshint', 'targethtml:dev', 'compass:dev']);
   grunt.registerTask('prod', ['jshint', 'targethtml:prod', 'concat', 'uglify', 'compass:prod']);
   grunt.registerTask('prod_debug', [ 'targethtml:prod_debug', 'concat', 'compass:dev']);

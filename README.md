@@ -95,3 +95,5 @@ To get the production version of the project (files at `_dist` folder) just do
 
 
 _Thanks to [@carlosvillu](https://github.com/carlosvillu) for his help w/ the Google API and Promises management w/ BlueBird :)_ 
+
+_Thanks to [@gbeltri](http://www.domestika.org/es/projects/163966-you-tumbrl) for her amazing design!! :)_ 

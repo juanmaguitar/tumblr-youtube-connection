@@ -113,12 +113,13 @@ a { color: #6ABE92; }
 					display:inline-block;
 					margin:10px;
 					width: 250px;
-					p { font-size: 20px; }
+					p { font-size: 17px; }
 				}
 			}
 		}
 	}
 }
+
 
 #tumblr_videos {
 	& {
@@ -132,32 +133,60 @@ a { color: #6ABE92; }
 	}
 }
 
-#adding_videos {
+
+
+#migration_progress {
 	& {
-		width: 730px;
-		margin: 2em auto;
+		margin:3em auto;
+		width: 900px;
+		clear:both;
+	}
+	& > div {
+		background-image: '006749-3d-transparent-glass-icon-arrows-arrow11-right.png';
+		text-align: center;
+		margin:3em 0;
+		& > * {
+			display: inline-block;
+		}
+		& > img {
+			margin: 0 2em;
+		}
 	}
 
+	svg {
+		position: absolute;
+		width: 463px;
+		left: 400px;
+		bottom: -284px;
+	}
+
+	#adding_videos {
+		text-align: center;
+	}
+	#percentage {
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		color: #fff;
+
+		text-align: center;
+		border: 10px solid #34887C;
+		p {
+			margin:2.5em 0;
+			strong {
+				font-size: 2.5em;
+			}
+			span {
+				font-size: .7em;
+				display: block;
+				margin: .5em;
+			}
+		}
+	}
 }
 
-#percentage {
-	margin:0;
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
-	color: #fff;
 
+#process_completed {
 	text-align: center;
-	border: 10px solid #34887C;
-	p {
-		margin:2.5em 0;
-		strong {
-			font-size: 2.5em;
-		}
-		span {
-			font-size: .7em;
-			display: block;
-			margin: .5em;
-		}
-	}
+	margin-top:6em;
 }

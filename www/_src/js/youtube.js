@@ -115,7 +115,7 @@
 	};
 
 	/**
-	* Update UI after playlist creation and returns list of videos to be inserted in the playlist.
+	* Call for the UI Update after playlist creation and returns list of videos to be inserted in the playlist.
 	* @param {Objects} response API response
 	*/
 	oYoutube.afterPlaylistCreated = function(response){
@@ -131,12 +131,14 @@
 			updateUiPlaylist(playlist_data);
 		}
 
+		window.scrollTo(0,document.body.scrollHeight);
+
 		return video_posts; // return array of videos to be treated w/ each (bluebird)
 
 	};
 
 	/**
-	* Returns a Promise (chaining) that creates a new playlist in youTube (through its API) and solve it (the promise) once is created
+	* Returns a Promise (chaining) that inserts a video into the recently created youTube playlist  (through its API) and solve it (the promise) once is created (so next promise can start through 'each')
 	* @param {Object} video Video custom data
 	* @returns {Object} Pronise
 	*/
@@ -176,13 +178,25 @@
 	* @param {Number} counter_add_videos Total of added videos
 	* @param {Number} percentage_add_videos Percentage of videos added from the total
 	*/
-	function updateUIafterVideoInserted ( response, video, counter_add_videos, percentage_add_videos ) {
+	function updateUIafterVideoInserted ( response, video, counter_add_videos, percentage ) {
 
 		var videoTitle = response.result.snippet.title,
 			videoId = response.result.snippet.resourceId.videoId,
-			videoUrl = video.url;
+			videoUrl = video.url,
 
-		$('#percentage').html(parseInt(percentage_add_videos,10)+"%");
+			// percentage adjustments
+			parsedPercentage = parseInt(percentage,10),
+			round5 = function (x){ return Math.ceil(x/5)*5; },
+			roundedPercentage = round5(parsedPercentage),
+
+			findProgressClass = function (index, css) {
+				return (css.match (/(^|\s)progress-\S+/g) || []).join(' ');
+			};
+
+		$('#percentage')
+			.removeClass (findProgressClass)
+			.addClass ("progress-" + roundedPercentage)
+			.find("p strong").html( roundedPercentage);
 
 /*
 		$('#adding_videos span').html(
@@ -220,6 +234,8 @@
 
 		$("#process_completed").removeClass("hidden");
 		$("#process_completed a").attr("href", updateLinkContent );
+
+		window.scrollTo(0,document.body.scrollHeight);
 
 	}
 
