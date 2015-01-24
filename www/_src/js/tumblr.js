@@ -43,7 +43,6 @@
 			 */
 			$input_user_tumblr = $("#tumblr_site input");
 
-
 	// Events
 	oTumblr.setEvents = function () {
 

@@ -116,7 +116,7 @@ module.exports = function(grunt) {
       }
   });
 
-  /* uglify */
+   /* uglify */
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.config('uglify', {
       options: {
@@ -145,7 +145,7 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask('dev', ['jshint', 'targethtml:dev', 'compass:dev']);
-  grunt.registerTask('prod', ['jshint', 'targethtml:prod', 'concat', 'uglify', 'compass:prod']);
+  grunt.registerTask('prod', ['jshint', 'targethtml:prod', 'concat',  'uglify', 'compass:prod']);
   grunt.registerTask('prod_debug', [ 'targethtml:prod_debug', 'concat', 'compass:dev']);
   grunt.registerTask('default', ['jshint', 'targethtml:dev', 'compass:dev']);
 

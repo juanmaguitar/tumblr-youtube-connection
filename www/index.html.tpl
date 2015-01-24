@@ -19,7 +19,7 @@
         <!--<!(endif)-->
 
         <!--(if target prod )><!-->
-        <link rel="stylesheet" href="_dist/main.css">
+        <link rel="stylesheet" href="dist/main.css">
         <!--<!(endif)-->
 
     </head>
@@ -38,7 +38,7 @@
             <section id="tumblr_site">
                  <dl>
                      <dt>http://</dt>
-                     <dd><input value="virginmobileusa" class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
+                     <dd><input class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
                 </dl>
                 <button class="ui-tumblr">get videos</button >
             </section>
@@ -88,19 +88,10 @@
 
 			<p id="process_completed" class="hidden"><strong>Process Completed!!</strong> <a href="https://www.youtube.com/playlist?list=" target="_blank">Check</a> your playlist now</p>
 
-
-<!--
-            <details id="videos_addition_completed" class="hidden">
-                <summary class="ok"><strong></strong> videos added to playlist <strong></strong>!!</summary>
-                <div class="videos_container">
-                    <ol></ol>
-                </div>
-            </details>
--->
-
-
-
         </div> <!-- @end container -->
+
+        <!-- github label -->
+        <a href="https://github.com/juanmaguitar/tumblr-youtube-connection"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
 
         <!--(if target dev)><!-->
         <script src="_src/bower_components/jquery/dist/jquery.js"></script>
@@ -139,7 +130,7 @@
         <!--<!(endif)-->
 
         <!--(if target prod)><!-->
-        <script src="_dist/tumblr-youtube-connection.min.js"></script>
+        <script src="dist/tumblr-youtube-connection.min.js"></script>
         <!--<!(endif)-->
 
         <!--(if target prod_debug)><!-->
@@ -154,7 +145,7 @@
                     nope: [
                         // TO-DO: Fix double loading w/ yepnope.js (try another loaders)
                         // http://stackoverflow.com/questions/6400067/what-is-causing-my-scripts-to-be-requested-twice-while-using-modernizr-load-yep
-                        '_dist/details-pollyfill.min.js'
+                        'dist/details-pollyfill.min.js'
                     ],
                     complete: function() {
                         jQuery().details ?  $('details').details() : null ;

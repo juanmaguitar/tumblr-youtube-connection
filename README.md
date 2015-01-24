@@ -43,12 +43,12 @@ Get an _ID Client_ and an _API key_ from the Google APIs Console at [https://cod
 
 And replace the...
 
-- `MY_OAUTH2_CLIENT_ID_localhost_8080` string with your _ID Client_ 
+- `MY_OAUTH2_CLIENT_ID` string with your _ID Client_ 
 - `MY_GOOGLE_API_KEY` string with your _API key_ 
 
 ... in the `www/_src/js/config.js` file
 
-    GOOGLE_OAUTH2_CLIENT_ID = 'MY_OAUTH2_CLIENT_ID_localhost_8080'
+    GOOGLE_OAUTH2_CLIENT_ID = 'MY_OAUTH2_CLIENT_ID'
     GOOGLE_API_KEY = 'MY_GOOGLE_API_KEY'
 
 ### More API Google settings

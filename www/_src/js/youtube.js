@@ -40,7 +40,11 @@
 	 * Button to get tumblr videos
 	 * @type {jQuery}
 	 */
-	$button_add_youtube = $("#tumblr_to_youtube");
+	$button_add_youtube = $("#tumblr_to_youtube"),
+
+	// CONSTANTS
+	PLAYLIST_DESCRIPTION = "Playlist w/ videos from http://",
+	PLAYLIST_CREATION = "Created on ";
 
 	/* helper */
 	function getToday() {
@@ -92,8 +96,8 @@
 	*/
 	oYoutube.promiseCreatePlaylist = function () {
 
-		var tumblr_site = $("#tumblr_site input").val(),
-				playlist_description = PLAYLIST_DESCRIPTION + tumblr_site;
+		var tumblr_user = $("#tumblr_site input").val(),
+				playlist_description = PLAYLIST_DESCRIPTION + tumblr_user + ".tumblr.com";
 
 		playlist_description += "\n " + PLAYLIST_CREATION + getToday() + " from " + document.URL;
 
@@ -102,7 +106,7 @@
 				part: 'snippet,status',
 				resource: {
 					snippet: {
-						title: "@"+tumblr_site,
+						title: "@"+tumblr_user,
 						description: playlist_description
 					},
 					status: {
