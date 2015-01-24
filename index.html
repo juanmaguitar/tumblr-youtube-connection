@@ -17,7 +17,7 @@
         
 
         
-        <link rel="stylesheet" href="_dist/main.css">
+        <link rel="stylesheet" href="dist/main.css">
         
 
     </head>
@@ -36,7 +36,7 @@
             <section id="tumblr_site">
                  <dl>
                      <dt>http://</dt>
-                     <dd><input value="virginmobileusa" class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
+                     <dd><input class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
                 </dl>
                 <button class="ui-tumblr">get videos</button >
             </section>
@@ -94,7 +94,7 @@
         
 
         
-        <script src="_dist/tumblr-youtube-connection.min.js"></script>
+        <script src="dist/tumblr-youtube-connection.min.js"></script>
         
 
         
@@ -107,7 +107,7 @@
                     nope: [
                         // TO-DO: Fix double loading w/ yepnope.js (try another loaders)
                         // http://stackoverflow.com/questions/6400067/what-is-causing-my-scripts-to-be-requested-twice-while-using-modernizr-load-yep
-                        '_dist/details-pollyfill.min.js'
+                        'dist/details-pollyfill.min.js'
                     ],
                     complete: function() {
                         jQuery().details ?  $('details').details() : null ;
