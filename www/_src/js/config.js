@@ -11,7 +11,7 @@
 			'https://www.googleapis.com/auth/youtube.upload'
 		];
 
-	win.GOOGLE_API_KEY = 'MY_GOOGLE_API_KEY'
+	win.GOOGLE_API_KEY = 'MY_GOOGLE_API_KEY';
 
 	// https://www.tumblr.com/docs/en/api/v2
 	win.TUMBLR_API_KEY = 'MY_TUMBLR_API_KEY';
