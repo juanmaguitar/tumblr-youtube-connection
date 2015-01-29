@@ -45,13 +45,13 @@
     };
 
     // Replace preview image of a video with it's iframe.
-    function LoadYoutubeVidOnPreviewClick(id,w ,h) {
+     win.LoadYoutubeVidOnPreviewClick = function (id,w ,h) {
         var code='<iframe src="https://www.youtube.com/embed/'+id+'/?autoplay=1&autohide=1&border=0&wmode=opaque&enablejsapi=1" width="'+w+'" height="'+h+'" frameborder=0 allowfullscreen style="border:1px solid #ccc;" ></iframe>';
         var iframe = document.createElement('div');
         iframe.innerHTML=code;
         iframe=iframe.firstChild;
         var div=document.getElementById("skipser-youtubevid-"+id);
         div.parentNode.replaceChild( iframe, div);
-    }
+    };
 
 })( window );
