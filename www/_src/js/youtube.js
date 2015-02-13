@@ -61,6 +61,13 @@
 
 	}
 
+
+	// Topic Subscriptions
+	oYoutube.init = function() {
+		this.subscribeToTopics();
+		this.setEvents();
+	};
+
 	// Topic Subscriptions
 	oYoutube.subscribeToTopics = function() {
 
@@ -70,9 +77,7 @@
 			total_videos = posts.length;
 			video_posts = posts;
 			$("#tumblr_to_youtube").removeClass("hidden");
-			self.setEvents();
 		});
-
 	};
 
 	// Events
@@ -81,7 +86,8 @@
 		var self = this;
 
 		$button_add_youtube.bind ("click", function() {
-			$(this).attr("disabled","disabled");
+			var sCurrentStatus = "adding to youtube...".toUpperCase();
+			$(this).html(sCurrentStatus).addClass("in_progress");
 			$("#migration_progress").removeClass("hidden");
 			self.promiseCreatePlaylist()
 				.then( self.afterPlaylistCreated )
@@ -184,6 +190,9 @@
 	*/
 	function updateUIafterVideoInserted ( response, video, counter_add_videos, percentage ) {
 
+		console.log (video);
+		console.log (counter_add_videos);
+
 		var videoTitle = response.result.snippet.title,
 			videoId = response.result.snippet.resourceId.videoId,
 			videoUrl = video.url,
@@ -202,25 +211,8 @@
 			.addClass ("progress-" + roundedPercentage)
 			.find("p strong").html( roundedPercentage);
 
-/*
-		$('#adding_videos span').html(
-			function(item, content) {
-				return content+".";
-			}
-		);
-*/
-		$('#adding_videos strong').html(counter_add_videos);
-		//$('#videos_addition_completed strong:nth-child(1)').html(counter_add_videos);
 
-/*
-		$("#videos_addition_completed ol")
-			.append(
-				$("<li>")
-					.html( video.embed_code )
-					.append( $("<p>").html(video.slug) )
-				);
-*/
-	//	optimizeYouTubeEmbeds();
+		$('#adding_videos strong').html(counter_add_videos);
 
 	}
 
@@ -234,8 +226,7 @@
 	*/
 	function updateUIprocessCompleted () {
 
-
-
+		$button_add_youtube.attr("disabled","disabled").removeClass("in_progress");
 		$("#process_completed").removeClass("hidden");
 		$("#process_completed a").attr("href", updateLinkContent );
 
@@ -253,26 +244,6 @@
 		$('#adding_videos a')
 			.attr("href", updateLinkContent )
 			.html(data.title);
-
-		/*
-		$('#playlist-id').html(data.id);
-
-		$('#playlist-title').html(data.title);
-		$('#playlist_creation strong').html(data.title);
-
-		$('#playlist-description').html(data.description);
-
-		$('#playlist_creation').removeClass("hidden");
-		$('#playlist-button').attr("disabled", "disabled");
-
-		$('#adding_videos em:nth-child(1)').html(total_videos);
-		$('#adding_videos em:nth-child(2)').html(data.title);
-		$('#adding_videos em:nth-child(3)').html(percentage_add_videos+"%");
-
-		$('#adding_videos').removeClass("hidden");
-		$('#videos_addition_completed').removeClass("hidden");
-		$('#videos_addition_completed strong:nth-child(2)').html(data.title);
-		*/
 
 	}
 

@@ -32,16 +32,39 @@
 			tumblr_site,
 
 			/**
-			 * Button to get tumblr videos
+			 * Container of Tumblr UI Elements
 			 * @type {jQuery}
 			 */
-			$button_get_videos = $("#tumblr_site button"),
+			$container_tumblr = $("#tumblr_site"),
 
 			/**
 			 * Button to get tumblr videos
 			 * @type {jQuery}
 			 */
-			$input_user_tumblr = $("#tumblr_site input");
+			$button_get_videos = $container_tumblr.find("button:first-of-type"),
+
+			/**
+			 * Button to get tumblr videos
+			 * @type {jQuery}
+			 */
+			$input_user_tumblr = $container_tumblr.find("input:first-of-type");
+
+
+	// Topic Subscriptions
+	oTumblr.init = function() {
+		this.subscribeToTopics();
+		this.setEvents();
+	};
+
+
+	// Topic Subscriptions
+	oTumblr.subscribeToTopics = function() {
+		console.log ("subscribing to topics");
+		$.Topic( "finishGetTumblrPosts" ).subscribe( function ( posts ) {
+			$button_get_videos.attr("disabled","disabled").removeClass("in_progress");
+		});
+
+	};
 
 	// Events
 	oTumblr.setEvents = function () {
@@ -52,6 +75,13 @@
 			tumblr_site = $input_user_tumblr.val() + '.tumblr.com';
 			deactivateUiTumblr(this);
 			self.loadPosts( offset );
+		});
+
+		$input_user_tumblr.bind('keypress', function(e) {
+			var code = e.keyCode || e.which;
+			if(code == 13) { //Enter keycode
+				$button_get_videos.click();
+			}
 		});
 
 		return self;
@@ -137,8 +167,10 @@
 	* @param {String} url The url of the Tumblr site
 	*/
 	function deactivateUiTumblr ( button ) {
-		$(button).parent().addClass("disabled");
-		$("."+button.className).attr("disabled", "disabled");
+		var sCurrentStatus = "getting videos...".toUpperCase();
+		$container_tumblr.addClass("disabled");
+		$button_get_videos.addClass("in_progress").find("span").html(sCurrentStatus);
+		$input_user_tumblr.attr("disabled", "disabled");
 		$("#tumblr_videos_found").removeClass("hidden");
 	}
 

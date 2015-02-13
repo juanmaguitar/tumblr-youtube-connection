@@ -12,7 +12,8 @@ module.exports = function(grunt) {
     pivotal: {
       src: [
          '<%= devFolder %>/js/plugins/*.js',
-          '<%= devFolder %>/js/config.js',
+          '<%= devFolder %>/js/config.local.js',
+          '<%= devFolder %>/js/config.prod.js',
           '<%= devFolder %>/js/auth.js',
           '<%= devFolder %>/js/tumblr.js',
           '<%= devFolder %>/js/youtube.js',
@@ -106,7 +107,7 @@ module.exports = function(grunt) {
           '<%= devFolder %>/modernizr/modernizr.custom.js',
           '<%= devFolder %>/modernizr/details/details-test.js',
           '<%= devFolder %>/js/plugins/*.js',
-          '<%= devFolder %>/js/config.js',
+          '<%= devFolder %>/js/config.prod.js',
           '<%= devFolder %>/js/auth.js',
           '<%= devFolder %>/js/tumblr.js',
           '<%= devFolder %>/js/youtube.js',

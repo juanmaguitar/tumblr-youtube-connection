@@ -1,7 +1,7 @@
 !function ( $, win ) {
 	"use strict";
 
-	win.YOUTUMBLR.youtube.subscribeToTopics();
-	win.YOUTUMBLR.tumblr.setEvents();
+	win.YOUTUMBLR.tumblr.init();
+	win.YOUTUMBLR.youtube.init();
 
 }( jQuery, window );

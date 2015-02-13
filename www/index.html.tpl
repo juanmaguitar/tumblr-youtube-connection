@@ -40,7 +40,7 @@
                      <dt>http://</dt>
                      <dd><input class="ui-tumblr" type="text" size="20"/><span>.tumblr.com</span></dd>
                 </dl>
-                <button class="ui-tumblr">get videos</button >
+                <button class="ui-tumblr"><span>get videos</span></button >
             </section>
 
             <section id="tumblr_videos_found" class="hidden">
@@ -118,7 +118,7 @@
 
         <script src="_src/js/plugins.js"></script>
         <!-- <script src="_src/js/main.js"></script> -->
-        <script src="_src/js/config.js"></script>
+        <script src="_src/js/config.local.js"></script>
         <script src="_src/js/auth.js"></script>
         <script src="_src/js/tumblr.js"></script>
         <script src="_src/js/youtube.js"></script>

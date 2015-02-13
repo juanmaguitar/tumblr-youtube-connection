@@ -1,3 +1,5 @@
+@import "compass/css3/animation";
+
 body {
 	background: #3C7670;
 	color:#FFF;
@@ -38,6 +40,18 @@ a { color: #6ABE92; }
 .container { margin:1em;}
 .hidden { display:none !important; }
 .ok { color:green; }
+
+@include keyframes(tumblr_progress) {
+  0% { background:$barColor; }
+  25% { background: $overlayColor; }
+  50% { background: darken( $backColor, 10%); }
+  75% { background: $overlayColor; }
+  100% { background:$barColor; }
+};
+
+.in_progress {
+  @include animation(tumblr_progress 5s infinite)
+}
 
 #logo {
 	margin:3em auto;
