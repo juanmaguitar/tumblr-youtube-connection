@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    distFolder: '_dist',
+    distFolder: 'dist',
     devFolder: '_src',
     pkg: grunt.file.readJSON('package.json')
   });
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
     prod: {
       options: {
        sassDir: ['_src/scss'],
-       cssDir: ['_dist'],
+       cssDir: ['dist'],
        outputStyle : 'compressed',
        environment: 'production'
       }
