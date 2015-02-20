@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     pivotal: {
       src: [
           '<%= devFolder %>/js/plugins/*.js',
-          '<%= devFolder %>/js/config.{local|prod}.js',
+          '<%= devFolder %>/js/config.*.js',
           '<%= devFolder %>/js/{auth|tumblr|youtube|main}.js',
       ],
       options: {
@@ -131,39 +131,37 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.config('watch', {
       options: {
-        livereload: true,
+        livereload: '<%= connect.options.livereload %>',
       },
       all : {
-        files: ['<%= jshint.files %>', '<%= devFolder %>/scss/*'],
+        files: ['<%= jshint.files %>', '<%= devFolder %>/scss/*', '<%= tplFolder%>/* '],
         tasks: ['jshint', 'compass:dev', 'targethtml:dev']
       },
       sass : {
-        files: [ '<%= devFolder %>/scss/*', './*.tpl' ],
+        files: [ '<%= devFolder %>/scss/*', '<%= tplFolder%>/* ' ],
         tasks: [ 'compass:dev', 'targethtml:dev' ]
       }
   });
 
-  var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
-  var folderMount = function folderMount(connect, point) {
-    return connect.static(path.resolve(point));
-  };
-
   /* connect */
-  // grunt connect:keepalive
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.config('connect', {
+    options: {
+        port: 8080,
+        livereload: 35729,
+        hostname: 'localhost'
+    },
     livereload: {
-      options: {
-        port: 9999,
-        middleware: function(connect, options) {
-          return [lrSnippet, folderMount(connect, '.')]
+        options: {
+            open: true,
+            base: '<%= baseFolder %>'
         }
-      }
     }
   });
 
  // Creates the `server` task
-  grunt.registerTask('server',['connect:keepalive']);
+  grunt.registerTask('serve', ['connect:livereload','watch:all']);
+
   grunt.registerTask('dev', ['jshint', 'jasmine', 'targethtml:dev', 'compass:dev']);
   grunt.registerTask('prod', ['jshint', 'jasmine', 'targethtml:prod', 'concat',  'uglify', 'compass:prod']);
   grunt.registerTask('prod_debug', [ 'targethtml:prod_debug', 'concat', 'compass:dev']);

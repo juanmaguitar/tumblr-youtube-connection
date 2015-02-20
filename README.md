@@ -9,8 +9,8 @@ This project do the following:
 
 After cloning the repository, you must launch [`npm`](https://docs.npmjs.com/getting-started/what-is-npm) & [`bower`](http://bower.io/) installers and execute [`grunt`](http://gruntjs.com/)
 
-    $ git clone https://github.com/juanmaguitar/tumblr-youtube-connection.git
-    $ cd tumblr-youtube-connection
+    $ git clone https://github.com/juanmaguitar/youtumblr.git
+    $ cd youtumblr
     $ cd www
     $ npm install
     $ bower install
@@ -72,11 +72,24 @@ And _authorize requests using OAuth 2.0_ for the concrete methods we're using in
 ![youtube.playlistitems.insert](www/img/youtube_playlistitems_insert.png) 
 
 
-## Launching it locally
+## Launching it locally w/ Grunt
+
+To launch it locally you just have to do from the terminal:
+
+    $ cd youtumblr
+    $ grunt serve
+
+After that you'll have the project available in your browser in the URL
+
+    http://localhost:8080/
+
+Also, any change you do locally (js, scss, tpl) will cause the reloading of the page with the new changes :)
+
+## Launching it locally w/ Vagrant
 
 To launch it locally you just have to do from the terminal (asuming you have [_vagrant_](https://docs.vagrantup.com/v2/getting-started/) and [_virtual-box_](https://www.virtualbox.org/) installed):
 
-    $ cd tumblr-youtube-connection
+    $ cd youtumblr
     $ vagrant up
 
 After that you'll have the project available in your browser in the URL

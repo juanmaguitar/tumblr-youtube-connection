@@ -7,9 +7,9 @@ smarty
 .vagrant
 _src/js/config.js
 .sass-cache/
-www/_src/css/
-www/_dist/
-www/index.html
+www/src/css/
+www/build/
+index.html
 *.prod.js
 *.local.js
 
