@@ -8,7 +8,10 @@ body {
 }
 
 dl {
-	dt { float:left; clear:left; }
+	dt {
+		float:left;
+		clear:left;
+	}
 	dd { -webkit-margin-start: 10px; }
 }
 

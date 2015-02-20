@@ -1,8 +1,11 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    distFolder: 'dist',
-    devFolder: '_src',
+    baseFolder: 'www',
+    buildFolder: '<%= baseFolder %>/build',
+    devFolder: '<%= baseFolder %>/src',
+    testsFolder: '<%= baseFolder %>/test',
+    tplFolder: '<%= baseFolder %>/templates',
     pkg: grunt.file.readJSON('package.json')
   });
 
@@ -11,16 +14,12 @@ module.exports = function(grunt) {
   grunt.config('jasmine', {
     pivotal: {
       src: [
-         '<%= devFolder %>/js/plugins/*.js',
-          '<%= devFolder %>/js/config.local.js',
-          '<%= devFolder %>/js/config.prod.js',
-          '<%= devFolder %>/js/auth.js',
-          '<%= devFolder %>/js/tumblr.js',
-          '<%= devFolder %>/js/youtube.js',
-          '<%= devFolder %>/js/main.js'
+          '<%= devFolder %>/js/plugins/*.js',
+          '<%= devFolder %>/js/config.{local|prod}.js',
+          '<%= devFolder %>/js/{auth|tumblr|youtube|main}.js',
       ],
       options: {
-        specs: '<%= devFolder %>/specs/*spec.js',
+        specs: '<%= testsFolder %>/specs/*spec.js',
         vendor: [
           '<%= devFolder %>/bower_components/jquery/dist/jquery.js',
           '<%= devFolder %>/bower_components/bluebird/js/browser/bluebird.js',
@@ -36,16 +35,16 @@ module.exports = function(grunt) {
   grunt.config('compass', {
     dev: {
       options: {
-        sassDir: ['_src/scss'],
-        cssDir: ['_src/css'],
+        sassDir: '<%= devFolder %>/scss',
+        cssDir: '<%= devFolder %>/css',
         outputStyle : 'nested',
         environment: 'development'
       }
     },
     prod: {
       options: {
-       sassDir: ['_src/scss'],
-       cssDir: ['dist'],
+       sassDir: '<%= devFolder %>/scss',
+       cssDir: '<%= buildFolder %>',
        outputStyle : 'compressed',
        environment: 'production'
       }
@@ -57,17 +56,17 @@ module.exports = function(grunt) {
   grunt.config('targethtml', {
     dev: {
       files: {
-        'index.html' : 'index.html.tpl'
+        '<%= baseFolder %>/index.html' : '<%= tplFolder %>/index.html.tpl'
       }
     },
     prod: {
       files: {
-        'index.html' : 'index.html.tpl'
+        '<%= baseFolder %>/index.html' : '<%= tplFolder %>/index.html.tpl'
       }
     },
     prod_debug: {
       files: {
-        'index.html' : 'index.html.tpl'
+        '<%= baseFolder %>/index.html' : '<%= tplFolder %>/index.html.tpl'
       }
     }
   });
@@ -108,10 +107,7 @@ module.exports = function(grunt) {
           '<%= devFolder %>/modernizr/details/details-test.js',
           '<%= devFolder %>/js/plugins/*.js',
           '<%= devFolder %>/js/config.prod.js',
-          '<%= devFolder %>/js/auth.js',
-          '<%= devFolder %>/js/tumblr.js',
-          '<%= devFolder %>/js/youtube.js',
-          '<%= devFolder %>/js/main.js'
+          '<%= devFolder %>/js/{auth|tumblr|youtube|main}.js',
         ],
         dest: '<%= devFolder %>/tmp/<%= pkg.name %>.js'
       }
@@ -125,8 +121,8 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          '<%= distFolder %>/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>' ],
-          '<%= distFolder %>/details-pollyfill.min.js': ['<%= devFolder %>/modernizr/details/details-pollyfill.js' ]
+          '<%= buildFolder %>/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>' ],
+          '<%= buildFolder %>/details-pollyfill.min.js': ['<%= devFolder %>/modernizr/details/details-pollyfill.js' ]
         }
       }
   });
@@ -134,6 +130,9 @@ module.exports = function(grunt) {
   /* watch */
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.config('watch', {
+      options: {
+        livereload: true,
+      },
       all : {
         files: ['<%= jshint.files %>', '<%= devFolder %>/scss/*'],
         tasks: ['jshint', 'compass:dev', 'targethtml:dev']
@@ -144,9 +143,29 @@ module.exports = function(grunt) {
       }
   });
 
+  var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
+  var folderMount = function folderMount(connect, point) {
+    return connect.static(path.resolve(point));
+  };
 
-  grunt.registerTask('dev', ['jshint', 'targethtml:dev', 'compass:dev']);
-  grunt.registerTask('prod', ['jshint', 'targethtml:prod', 'concat',  'uglify', 'compass:prod']);
+  /* connect */
+  // grunt connect:keepalive
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.config('connect', {
+    livereload: {
+      options: {
+        port: 9999,
+        middleware: function(connect, options) {
+          return [lrSnippet, folderMount(connect, '.')]
+        }
+      }
+    }
+  });
+
+ // Creates the `server` task
+  grunt.registerTask('server',['connect:keepalive']);
+  grunt.registerTask('dev', ['jshint', 'jasmine', 'targethtml:dev', 'compass:dev']);
+  grunt.registerTask('prod', ['jshint', 'jasmine', 'targethtml:prod', 'concat',  'uglify', 'compass:prod']);
   grunt.registerTask('prod_debug', [ 'targethtml:prod_debug', 'concat', 'compass:dev']);
   grunt.registerTask('default', ['jshint', 'targethtml:dev', 'compass:dev']);
 

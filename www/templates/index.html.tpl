@@ -15,11 +15,11 @@
         <link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
 
         <!--(if target dev || prod_debug )><!-->
-        <link rel="stylesheet" href="_src/css/main.css">
+        <link rel="stylesheet" href="src/css/main.css">
         <!--<!(endif)-->
 
         <!--(if target prod )><!-->
-        <link rel="stylesheet" href="dist/main.css">
+        <link rel="stylesheet" href="build/main.css">
         <!--<!(endif)-->
 
     </head>
@@ -94,17 +94,17 @@
         <a href="https://github.com/juanmaguitar/tumblr-youtube-connection"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
 
         <!--(if target dev)><!-->
-        <script src="_src/bower_components/jquery/dist/jquery.js"></script>
-        <script src="_src/bower_components/bluebird/js/browser/bluebird.js"></script>
+        <script src="src/bower_components/jquery/dist/jquery.js"></script>
+        <script src="src/bower_components/bluebird/js/browser/bluebird.js"></script>
 
-        <script src="_src/modernizr/modernizr.custom.js"></script>
-        <script src="_src/modernizr/details/details-test.js"></script>
+        <script src="src/modernizr/modernizr.custom.js"></script>
+        <script src="src/modernizr/details/details-test.js"></script>
         <script>
             Modernizr.load(
                 {
                     test: Modernizr.details,
                     nope: [
-                        '_src/modernizr/details/details-pollyfill.js'
+                        'src/modernizr/details/details-pollyfill.js'
                     ],
                     complete: function() {
                         jQuery().details ?  $('details').details() : null ;
@@ -112,29 +112,29 @@
                 }
             );
         </script>
-        <script src="_src/js/plugins/gplus-youtubeembed.js"></script>
-        <script src="_src/js/plugins/observer.js"></script>
+        <script src="src/js/plugins/gplus-youtubeembed.js"></script>
+        <script src="src/js/plugins/observer.js"></script>
 
 
-        <script src="_src/js/plugins.js"></script>
-        <!-- <script src="_src/js/main.js"></script> -->
-        <script src="_src/js/config.local.js"></script>
-        <script src="_src/js/auth.js"></script>
-        <script src="_src/js/tumblr.js"></script>
-        <script src="_src/js/youtube.js"></script>
+        <script src="src/js/plugins.js"></script>
+        <!-- <script src="src/js/main.js"></script> -->
+        <script src="src/js/config.local.js"></script>
+        <script src="src/js/auth.js"></script>
+        <script src="src/js/tumblr.js"></script>
+        <script src="src/js/youtube.js"></script>
 
         <!-- starting point of the app -->
-        <script src="_src/js/main.js"></script>
+        <script src="src/js/main.js"></script>
 
         <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
         <!--<!(endif)-->
 
         <!--(if target prod)><!-->
-        <script src="dist/tumblr-youtube-connection.min.js"></script>
+        <script src="build/tumblr-youtube-connection.min.js"></script>
         <!--<!(endif)-->
 
         <!--(if target prod_debug)><!-->
-        <script src="_src/tmp/tumblr-youtube-connection.js"></script>
+        <script src="src/tmp/tumblr-youtube-connection.js"></script>
         <!--<!(endif)-->
 
         <!--(if target prod || prod_debug )><!-->
@@ -145,7 +145,7 @@
                     nope: [
                         // TO-DO: Fix double loading w/ yepnope.js (try another loaders)
                         // http://stackoverflow.com/questions/6400067/what-is-causing-my-scripts-to-be-requested-twice-while-using-modernizr-load-yep
-                        'dist/details-pollyfill.min.js'
+                        "build/details-pollyfill.min.js"
                     ],
                     complete: function() {
                         jQuery().details ?  $('details').details() : null ;
