@@ -5,7 +5,7 @@
  * and $rhythm-unit variables. Also, correct text resizing oddly in IE 6/7 when
  * body `font-size` is set using `em` units.
  */
-/* line 106, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/typography/_vertical_rhythm.scss */
+/* line 106, ../../../../../../../Users/juanma/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/_vertical_rhythm.scss */
 html {
   font-size: 100%;
   line-height: 1.5em; }
@@ -555,8 +555,8 @@ th {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 2px solid #3c7670;
-  background-color: #95c2a1; }
+  border: 2px solid #3C7670;
+  background-color: #95C2A1; }
 
 /* -------------------------------------
  * Optional centered circle w/text
@@ -566,7 +566,7 @@ th {
   position: absolute;
   width: 60px;
   height: 60px;
-  background-color: #1bbe9e;
+  background-color: #1BBE9E;
   border-radius: 50%;
   margin-left: 20px;
   margin-top: 20px;
@@ -774,65 +774,38 @@ a {
   color: green; }
 
 @-moz-keyframes tumblr_progress {
-  /* line 48, ../scss/_style.scss */
   0% {
-    background: #95c2a1; }
-
-  /* line 49, ../scss/_style.scss */
+    background: #95C2A1; }
   25% {
-    background: #1bbe9e; }
-
-  /* line 50, ../scss/_style.scss */
+    background: #1BBE9E; }
   50% {
     background: #2b5450; }
-
-  /* line 51, ../scss/_style.scss */
   75% {
-    background: #1bbe9e; }
-
-  /* line 52, ../scss/_style.scss */
+    background: #1BBE9E; }
   100% {
-    background: #95c2a1; } }
+    background: #95C2A1; } }
 @-webkit-keyframes tumblr_progress {
-  /* line 48, ../scss/_style.scss */
   0% {
-    background: #95c2a1; }
-
-  /* line 49, ../scss/_style.scss */
+    background: #95C2A1; }
   25% {
-    background: #1bbe9e; }
-
-  /* line 50, ../scss/_style.scss */
+    background: #1BBE9E; }
   50% {
     background: #2b5450; }
-
-  /* line 51, ../scss/_style.scss */
   75% {
-    background: #1bbe9e; }
-
-  /* line 52, ../scss/_style.scss */
+    background: #1BBE9E; }
   100% {
-    background: #95c2a1; } }
+    background: #95C2A1; } }
 @keyframes tumblr_progress {
-  /* line 48, ../scss/_style.scss */
   0% {
-    background: #95c2a1; }
-
-  /* line 49, ../scss/_style.scss */
+    background: #95C2A1; }
   25% {
-    background: #1bbe9e; }
-
-  /* line 50, ../scss/_style.scss */
+    background: #1BBE9E; }
   50% {
     background: #2b5450; }
-
-  /* line 51, ../scss/_style.scss */
   75% {
-    background: #1bbe9e; }
-
-  /* line 52, ../scss/_style.scss */
+    background: #1BBE9E; }
   100% {
-    background: #95c2a1; } }
+    background: #95C2A1; } }
 /* line 55, ../scss/_style.scss */
 .in_progress {
   -moz-animation: tumblr_progress 5s infinite;

@@ -10,8 +10,6 @@ _src/js/config.js
 www/src/css/
 www/build/
 index.html
-*.prod.js
-*.local.js
 
 #################
 ## Eclipse

@@ -165,6 +165,6 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', ['jshint', 'jasmine', 'targethtml:dev', 'compass:dev']);
   grunt.registerTask('prod', ['jshint', 'jasmine', 'targethtml:prod', 'concat',  'uglify', 'compass:prod']);
   grunt.registerTask('prod_debug', [ 'targethtml:prod_debug', 'concat', 'compass:dev']);
-  grunt.registerTask('default', ['jshint', 'targethtml:dev', 'compass:dev']);
+  grunt.registerTask('default', ['dev'] );
 
 };

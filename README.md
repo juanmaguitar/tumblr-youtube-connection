@@ -1,43 +1,48 @@
-# Tumblr YouTube Connection
+#Tumblr YouTube Connection
 
 This project do the following:
 
 - Connects to a Tumblr Site and gets all the YouTube Videos
 - Creates a YouTube playlist w/ all these videos found
 
-## Install
+##Install
 
 After cloning the repository, you must launch [`npm`](https://docs.npmjs.com/getting-started/what-is-npm) & [`bower`](http://bower.io/) installers and execute [`grunt`](http://gruntjs.com/)
 
     $ git clone https://github.com/juanmaguitar/youtumblr.git
     $ cd youtumblr
-    $ cd www
     $ npm install
     $ bower install
     $ grunt
 
 _Check [these solutions](http://stackoverflow.com/questions/23042166/grunt-contrib-sass-not-working-with-compass) if you find problems w/ compass_
 
-## Setup
+##Setup
 
-To test it you have to edit the file `www/_src/js/config.js` and add the proper oAuth and API keys
+To have it fully working (interacting properly w/ Tumblr and YouTube API's) you have to edit:
 
-### Get a Tumblr API Key
+- the file `www/src/js/config.local.js` to configure the local version of the app (ex: `http://localhost:8080`)
+- the file `www/src/js/config.prod.js` to configure the production version of the app (ex: `http://youtumblr.com`)
+
+...and add the proper oAuth and API keys
+
+###Get a Tumblr API Key for http://localhost:8080
 
 Check the [Tumblr API documentation](https://www.tumblr.com/docs/en/api/v2#auth)   
-Get your Tumblr _OAuth Consumer Key_ from [here](https://www.tumblr.com/oauth/apps)
+
+Get your Tumblr _OAuth Consumer Key_ for the domain `http://localhost:8080` from [here](https://www.tumblr.com/oauth/apps) 
 
 ![Tumblr API Key](www/img/tumblr_API.png)
 
-And replace the `MY_TUMBLR_API_KEY` string with your _OAuth Consumer Key_  in the `www/_src/js/config.js` file
+And replace the `MY_TUMBLR_API_KEY` string with your _OAuth Consumer Key_  in the `www/src/js/config.local.js` file
 
     TUMBLR_API_KEY = 'MY_TUMBLR_API_KEY'
 
-### Get a Google API Key
+### Get a Google API Key for http://localhost:8080
 
 Check the [Google API documentation](https://developers.google.com/api-client-library/javascript/features/authentication) 
 
-Get an _ID Client_ and an _API key_ from the Google APIs Console at [https://code.google.com/apis/console](https://code.google.com/apis/console)
+Get an _ID Client_ and an _API key_ for the domain `http://localhost:8080` from the Google APIs Console at [https://code.google.com/apis/console](https://code.google.com/apis/console)
 
 ![Google API Key](www/img/google_API.png) 
 
@@ -46,7 +51,7 @@ And replace the...
 - `MY_OAUTH2_CLIENT_ID` string with your _ID Client_ 
 - `MY_GOOGLE_API_KEY` string with your _API key_ 
 
-... in the `www/_src/js/config.js` file
+... in the `www/src/js/config.local.js` file
 
     GOOGLE_OAUTH2_CLIENT_ID = 'MY_OAUTH2_CLIENT_ID'
     GOOGLE_API_KEY = 'MY_GOOGLE_API_KEY'
@@ -72,11 +77,12 @@ And _authorize requests using OAuth 2.0_ for the concrete methods we're using in
 ![youtube.playlistitems.insert](www/img/youtube_playlistitems_insert.png) 
 
 
-## Launching it locally w/ Grunt
+##Launching it locally w/ Grunt
 
 To launch it locally you just have to do from the terminal:
 
-    $ cd youtumblr
+_(from `youtumblr` root folder)_
+
     $ grunt serve
 
 After that you'll have the project available in your browser in the URL
@@ -85,24 +91,25 @@ After that you'll have the project available in your browser in the URL
 
 Also, any change you do locally (js, scss, tpl) will cause the reloading of the page with the new changes :)
 
-## Launching it locally w/ Vagrant
+##Launching it locally w/ Vagrant
 
 To launch it locally you just have to do from the terminal (asuming you have [_vagrant_](https://docs.vagrantup.com/v2/getting-started/) and [_virtual-box_](https://www.virtualbox.org/) installed):
 
-    $ cd youtumblr
+_(from `youtumblr/vagrant` folder)_
+
     $ vagrant up
 
 After that you'll have the project available in your browser in the URL
 
     http://localhost:8080/
 
-## Development & Production version
+##Development & Production version
 
 To get the development version of the project just do
 
     grunt dev
 
-To get the production version of the project (files at `_dist` folder) just do
+To get the production version of the project (files at `www/build` folder) just do
 
     grunt prod
 
