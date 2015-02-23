@@ -81,7 +81,7 @@ module.exports = function(grunt) {
 			'<%= devFolder %>/js/*'
 		],
 		options: {
-			// options here to override JSHint defaults
+			reporter: require('jshint-stylish'),
 			expr : true,
 			debug: true,
 			globals: {
@@ -159,8 +159,22 @@ module.exports = function(grunt) {
     }
   });
 
- // Creates the `server` task
+  // Available tasks
+  grunt.loadNpmTasks('grunt-available-tasks');
+  grunt.config('availabletasks', {
+    tasks: {
+      options: {
+        showTasks: ['user'],
+        sort: true
+      }
+    }
+  });
+
+
+  // Creates the `server` task
   grunt.registerTask('serve', ['connect:livereload','watch:all']);
+
+  grunt.registerTask('tasks', ['availabletasks']);
 
   grunt.registerTask('dev', ['jshint', 'jasmine', 'targethtml:dev', 'compass:dev']);
   grunt.registerTask('prod', ['jshint', 'jasmine', 'targethtml:prod', 'concat',  'uglify', 'compass:prod']);

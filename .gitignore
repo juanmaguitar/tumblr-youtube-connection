@@ -12,6 +12,7 @@ www/build/
 index.html
 *.prod.js
 *.local.js
+.grunt
 
 #################
 ## Eclipse
