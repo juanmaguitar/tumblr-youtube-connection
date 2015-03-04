@@ -16,7 +16,9 @@ module.exports = function(grunt) {
       src: [
           '<%= devFolder %>/js/plugins/*.js',
           '<%= devFolder %>/js/config.*.js',
-          '<%= devFolder %>/js/{auth|tumblr|youtube|main}.js',
+          '<%= devFolder %>/js/auth.js',
+          '<%= devFolder %>/js/tumblr.js',
+          '<%= devFolder %>/js/youtube.js'
       ],
       options: {
         specs: '<%= testsFolder %>/specs/*spec.js',
@@ -29,6 +31,7 @@ module.exports = function(grunt) {
       }
     }
   });
+
 
   // compass
   grunt.loadNpmTasks('grunt-contrib-compass');
@@ -107,7 +110,10 @@ module.exports = function(grunt) {
           '<%= devFolder %>/modernizr/details/details-test.js',
           '<%= devFolder %>/js/plugins/*.js',
           '<%= devFolder %>/js/config.prod.js',
-          '<%= devFolder %>/js/{auth|tumblr|youtube|main}.js',
+          '<%= devFolder %>/js/auth.js',
+          '<%= devFolder %>/js/tumblr.js',
+          '<%= devFolder %>/js/youtube.js',
+          '<%= devFolder %>/js/main.js'
         ],
         dest: '<%= devFolder %>/tmp/<%= pkg.name %>.js'
       }
@@ -140,6 +146,10 @@ module.exports = function(grunt) {
       sass : {
         files: [ '<%= devFolder %>/scss/*', '<%= tplFolder%>/* ' ],
         tasks: [ 'compass:dev', 'targethtml:dev' ]
+      },
+      js : {
+        files: [ 'Gruntfile.js', '<%= jshint.files %>', '<%= testsFolder %>/specs/*spec.js' ],
+        tasks: [ 'jshint', 'jasmine' ]
       }
   });
 

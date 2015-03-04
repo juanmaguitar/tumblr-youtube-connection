@@ -50,6 +50,8 @@
 		$input_user_tumblr = $container_tumblr.find("input:first-of-type");
 
 
+	oTumblr.video_posts = video_posts;
+
 	// Topic Subscriptions
 	oTumblr.init = function() {
 		this.subscribeToTopics();
@@ -59,7 +61,6 @@
 
 	// Topic Subscriptions
 	oTumblr.subscribeToTopics = function() {
-		console.log ("subscribing to topics");
 		$.Topic( "finishGetTumblrPosts" ).subscribe( function ( posts ) {
 			$button_get_videos.attr("disabled","disabled").removeClass("in_progress");
 		});
@@ -104,7 +105,9 @@
 				offset: offset
 			},
 			dataType: "jsonp",
-			success: self.handleTumblrData
+			success: function(data) {
+				self.handleTumblrData(data);
+			}
 		});
 
 	};
@@ -125,7 +128,6 @@
 				total_posts = data.response.total_posts;
 
 		//updateUiVideosFound ( tumblr_site ) ;
-
 		$.each(data.response.posts, function(i, item) {
 			if ( /youtube/.test(item.permalink_url) ) {
 
@@ -147,7 +149,6 @@
 			}
 
 		});
-
 
 		if (data.response.posts.length == 20) {
 			optimizeYouTubeEmbeds();
